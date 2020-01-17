@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pedalling Continents</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.3/dist/confetti.browser.min.js"></script>
+  <script>
+    //Credit to Kiril Vatev at https://www.npmjs.com/package/canvas-confetti
+    var myCanvas = document.getElementById('canvas');
+    
+    var myConfetti = confetti.create(myCanvas, {
+        resize: true,
+        useWorker: true
+    });
+    
+    function runIt() {
+      var end = Date.now() + (5 * 1000);
+      var interval = setInterval(function() {
+      if (Date.now() > end) {
+          return clearInterval(interval);
+      }
+
+      confetti({
+          startVelocity: 30,
+          spread: 360,
+          particleCount: 200,
+          ticks: 60,
+          shapes: ['square', 'circle'],
+          origin: {
+              x: Math.random(),
+              y: Math.random() - 0.2
+          }
+      });
+      }, 200);
+    }
+</script>
+<link rel="stylesheet" href="styles.a7b7bad8b7350e702249.css"></head>
+<body>
+  <app-root></app-root>
+<script src="runtime-es2015.edb2fcf2778e7bf1d426.js" type="module"></script><script src="runtime-es5.edb2fcf2778e7bf1d426.js" nomodule defer></script><script src="polyfills-es5.6696c533341b95a3d617.js" nomodule defer></script><script src="polyfills-es2015.2987770fde9daa1d8a2e.js" type="module"></script><script src="main-es2015.d3f9164ab15e251389a8.js" type="module"></script><script src="main-es5.d3f9164ab15e251389a8.js" nomodule defer></script></body>
+</html>
