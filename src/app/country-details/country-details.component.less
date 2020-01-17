@@ -1,0 +1,34 @@
+@calendar-background: #333;
+div {
+    line-height: 1.5;
+}
+.distance {
+    color: white;
+    border: 1px solid #676767;
+    border-radius: .25em;
+    padding: 0 0.1em;
+    background: #333;
+    text-transform: uppercase;
+}
+
+.days {
+    background-color: @calendar-background;
+    padding: 0 0.5em;
+    border-top: 3px solid red;
+    margin-right: 5px;
+}
+
+.money::before {
+    content:"$";
+}
+
+.money {
+    background-color: #12996b;
+    padding: 0 0.3em;
+    color: #cdffd7;
+    border-left: black solid 0.5em;
+    margin-left: 5px;
+}
+.stick-label {
+    white-space: nowrap; 
+}

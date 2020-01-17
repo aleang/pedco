@@ -1,0 +1,123 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* Angular Material tutorial */
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+  
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: darkslategrey;
+    color: whitesmoke;
+}
+
+a,
+a:visited,
+a:hover {
+    color: lightskyblue;
+    text-decoration: none;
+}
+ul > li:hover {
+    #lift-animation;
+    background: grey;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+    display: inline-block;
+    cursor: pointer;
+    #click-box;
+}
+
+#click-box {
+    background: @button-country;
+    padding: 10px;
+    margin: 2px;
+    -webkit-transition: 1s ease-out;
+    transition: 1s ease-out;
+}
+
+#lift-animation {
+    -webkit-transform: @button-animation;
+    transform: @button-animation;
+    box-shadow: @button-shadow;
+}
+
+@button-animation: translateY(-0.25rem);
+@button-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.3);
+@button-country: dimgrey;
+
+.blog.column {
+    #click-box;
+    cursor: pointer;
+    padding: 0em 1em 1em 1em;
+}
+
+.blog.column:hover {
+    #lift-animation;
+    background: grey;
+}
+// used in both Map, Blog
+.column {
+    float: left;
+    width: 50%;
+    flex: 50%;
+    padding: 1em;
+    line-height: 1.5;
+}
+
+.row {
+    display: flex;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive Styles */
+  @media screen and (max-width: 880px) {
+    .row {
+      width: 100%;
+      display: block;
+    }
+
+    .column {
+      width: 95%;
+    }
+
+    .card-container .card {
+        width: 45%;
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    .column {
+        width: 90%;
+    }
+  }

@@ -1,0 +1,25 @@
+<div>
+    We cycled over 
+    <code class="distance">2</code>
+    <code class="distance">2</code>
+    <code class="distance">0</code>
+    <code class="distance">0</code>
+    <code class="distance">0</code>
+    <code class="distance">K</code>
+    <code class="distance">M</code>
+    for 
+    <span class="stick-label"><span class="days">21</span>months.</span> 
+    We spent on average around 
+    <span class="stick-label">NZD<span class="money">10,000</span></span> approximately.
+    <p>Select a country to see more information about that country.</p>
+</div>
+
+<div *ngIf="country">
+    We cycled in {{country.name}} over 
+    <code class="distance" *ngFor="let i of (country.distanceCycled+'km').split('')">{{i}}</code> 
+    for <span class="stick-label"><span class="days">{{country.daysCycled}}</span>days.</span> 
+    Our favourite place was {{country.favouritePlace}}. 
+    We spent on average around <span class="stick-label">NZD<span class="money">{{country.averageDailySpend | number:'1.2-2'}}</span></span> a day.
+    See the videos shared on Instagram through <a href="https://www.instagram.com/stories/highlights/{{country.igStory}}/" target="_blank">our Stories</a>. To read more blogs related to {{country.name}}, check out <a href="https://pedallingcontinents.wordpress.com/tag/{{country.name}}/" target="_blank">our WordPress blog.</a>
+   
+</div>

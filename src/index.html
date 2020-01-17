@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pedalling Continents</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.3/dist/confetti.browser.min.js"></script>
+  <script>
+    //Credit to Kiril Vatev at https://www.npmjs.com/package/canvas-confetti
+    var myCanvas = document.getElementById('canvas');
+    
+    var myConfetti = confetti.create(myCanvas, {
+        resize: true,
+        useWorker: true
+    });
+    
+    function runIt() {
+      var end = Date.now() + (5 * 1000);
+      var interval = setInterval(function() {
+      if (Date.now() > end) {
+          return clearInterval(interval);
+      }
+
+      confetti({
+          startVelocity: 30,
+          spread: 360,
+          particleCount: 200,
+          ticks: 60,
+          shapes: ['square', 'circle'],
+          origin: {
+              x: Math.random(),
+              y: Math.random() - 0.2
+          }
+      });
+      }, 200);
+    }
+</script>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
