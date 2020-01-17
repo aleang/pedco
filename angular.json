@@ -118,8 +118,13 @@
               "devServerTarget": "pedalling-continents:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "pedalling-continents"
 }
