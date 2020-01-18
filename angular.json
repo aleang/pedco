@@ -126,5 +126,10 @@
       }
     }
   },
-  "defaultProject": "pedalling-continents"
+  "defaultProject": "pedalling-continents",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "less"
+    }
+  }
 }

@@ -4,6 +4,6 @@ export class Country {
     daysCycled: number;
     distanceCycled: number;
     averageDailySpend: number;
-    favouritePlace: string;
+    favouritePlace?: string;
     igStory: number;
 }

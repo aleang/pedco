@@ -4,7 +4,7 @@ import { Country } from '../country';
 @Component({
   selector: 'app-countries',
   templateUrl: './countries.component.html',
-  styleUrls: ['./countries.component.less', '../app.component.css']
+  styleUrls: ['./countries.component.less', '../app.component.less']
 })
 
 export class CountriesComponent implements OnInit {

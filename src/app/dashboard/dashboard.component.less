@@ -1,25 +1,26 @@
-
+@import '../../styles.less';
+@imageAssets: '/assets/images';
 
 .card-container .card {
     background-size: contain;
     background-position: bottom right;
     background-repeat: no-repeat;
-    background-color: #ebf8fd;
+    background-color: @bg-light;
 }
 .mountain {
-    background-image: url('/assets/images/mountain.svg');
+    background-image: url('@{imageAssets}/mountain.svg');
 }
 .hot-air-balloon {
-    background-image: url('/assets/images/hot-air-balloon.svg');
+    background-image: url('@{imageAssets}/hot-air-balloon.svg');
 }
 .dune {
-    background-image: url('/assets/images/dune.svg');
+    background-image: url('@{imageAssets}/dune.svg');
 }
 .rain {
-    background-image: url('/assets/images/rain.svg');
+    background-image: url('@{imageAssets}/rain.svg');
 }
 .card h3, .card h3:hover {
-    color: darkslategrey;
+    color: @text-dark;
 }
 
 .flag {

@@ -1,4 +1,14 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+/* Colour Schemes */
+@text-light: whitesmoke;
+@text-dark: darkslategrey;
+@bg-light: whitesmoke;
+@bg-dark: darkslategrey;
+@link-light: lightskyblue;
+
+@button-animation: translateY(-0.25rem);
+@button-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.3);
+@button-country: dimgrey;
+@button-bg-hover: grey;
 
 /* Angular Material tutorial */
 @font-face {
@@ -24,21 +34,21 @@
     -webkit-font-smoothing: antialiased;
 }
 
-/* You can add global styles to this file, and also import other style files */
 body {
-    background-color: darkslategrey;
-    color: whitesmoke;
+    background-color: @bg-dark;
+    color: @text-light;
 }
 
 a,
 a:visited,
 a:hover {
-    color: lightskyblue;
+    color: @link-light;
     text-decoration: none;
 }
+
 ul > li:hover {
     #lift-animation;
-    background: grey;
+    background: @button-bg-hover;
 }
 
 ul {
@@ -67,10 +77,6 @@ li {
     box-shadow: @button-shadow;
 }
 
-@button-animation: translateY(-0.25rem);
-@button-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.3);
-@button-country: dimgrey;
-
 .blog.column {
     #click-box;
     cursor: pointer;
@@ -79,9 +85,10 @@ li {
 
 .blog.column:hover {
     #lift-animation;
-    background: grey;
+    background: @button-bg-hover;
 }
-// used in both Map, Blog
+
+// Shared between Map, Blog
 .column {
     float: left;
     width: 50%;
@@ -100,24 +107,31 @@ li {
     clear: both;
 }
 
-/* Responsive Styles */
-  @media screen and (max-width: 880px) {
+@media screen and (max-width: 880px) {
     .row {
-      width: 100%;
-      display: block;
+        width: 100%;
+        display: block;
     }
 
     .column {
-      width: 95%;
+        width: 95%;
     }
 
     .card-container .card {
         width: 45%;
     }
-  }
 
-  @media screen and (max-width: 575px) {
+    li {
+        padding: 2px 10px;
+        text-overflow: ellipsis;
+        max-width: 29%;
+        overflow: hidden;
+        white-space: nowrap;    
+    }
+}
+
+@media screen and (max-width: 575px) {
     .column {
         width: 90%;
     }
-  }
+}

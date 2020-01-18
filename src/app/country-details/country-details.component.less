@@ -1,34 +1,61 @@
-@calendar-background: #333;
+@number-tile-bg: #333;
+@calendar-bg: #333;
+@money-bg: #12996b;
+@road-sign-bg: gold;
+@ghost: transparent;
+
 div {
     line-height: 1.5;
 }
+
 .distance {
     color: white;
     border: 1px solid #676767;
     border-radius: .25em;
     padding: 0 0.1em;
-    background: #333;
+    background: @number-tile-bg;
     text-transform: uppercase;
 }
 
 .days {
-    background-color: @calendar-background;
+    background-color: @calendar-bg;
     padding: 0 0.5em;
     border-top: 3px solid red;
     margin-right: 5px;
 }
 
 .money::before {
-    content:"$";
+    content:"NZD $";
+}
+
+.fave-place {
+    padding: 0 .5em;
+    background: @road-sign-bg;
+    color: black;
+    white-space: nowrap;
+    position: relative;
+    margin-right: 0.5em;
+}
+
+.fave-place::after {
+    content: "";
+    top: 0;
+    left: 100%;
+    height: 0;
+    width: 0;
+    border-width: 8px;
+    border-style: solid;
+    border-color: @ghost @ghost @ghost @road-sign-bg;
+    display: inline-block;
+    position: absolute;
 }
 
 .money {
-    background-color: #12996b;
+    background-color: @money-bg;
     padding: 0 0.3em;
-    color: #cdffd7;
     border-left: black solid 0.5em;
-    margin-left: 5px;
 }
+
 .stick-label {
     white-space: nowrap; 
 }

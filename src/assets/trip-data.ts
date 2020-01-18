@@ -52,7 +52,6 @@ export const COUNTRIES: Country[] = [
         daysCycled: 4,
         distanceCycled: 130,
         averageDailySpend: 5,
-        favouritePlace: "(none)!",
         igStory: 17888999020279256,
     },
     {
@@ -118,4 +117,40 @@ export const COUNTRIES: Country[] = [
         favouritePlace: "Adriatic Sea",
         igStory: 17916199729348383,
     },
+    {
+        id: 'it',
+        name: 'Italy',
+        daysCycled: 14,
+        distanceCycled: 720,
+        averageDailySpend: 10.5,
+        favouritePlace: "Vicenza",
+        igStory: 17872907794470767,
+    },
+    {
+        id: 'fr',
+        name: 'France',
+        daysCycled: 12,
+        distanceCycled: 660,
+        averageDailySpend: 8.75,
+        favouritePlace: "French Riviera",
+        igStory: 18086182084119543,
+    },
+    {
+        id: 'es',
+        name: 'Spain',
+        daysCycled: 31,
+        distanceCycled: 1350,
+        averageDailySpend: 16.4,
+        favouritePlace: "Murcia",
+        igStory: 18092162683101184,
+    },
+    {
+        id: 'pt',
+        name: 'Portugal',
+        daysCycled: 10,
+        distanceCycled: 450,
+        averageDailySpend: 11.5,
+        favouritePlace: "Lisbon",
+        igStory: 17863750252582398,
+    }
   ];

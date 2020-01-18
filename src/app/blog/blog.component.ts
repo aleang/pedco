@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
-  styleUrls: ['../app.component.css', './blog.component.less']
+  styleUrls: ['../app.component.less', './blog.component.less']
 })
 export class BlogComponent implements OnInit {
   private blogLinks: string[];
@@ -14,7 +14,7 @@ export class BlogComponent implements OnInit {
   fetchingData: boolean;
 
   constructor(private http: HttpClient) {
-    this.wordpressApi = 'https://public-api.wordpress.com/rest/v1.1/sites/pedallingcontinents.wordpress.com/posts/?';
+    this.wordpressApi = 'https://public-api.wordpress.com/rest/v1.1/sites/pedallingcontinents.wordpress.com/posts/';
     this.blogLinks = ['tag/trip-status/', 'tag/dear-food-diary', 'category/report-card', 'tag/shoestring-travel'];
     this.queryTags = ['tag=trip-status/', 'tag=dear-food-diary', 'category=Report%20Card', 'tag=shoestring-travel'];
     this.postsResult = [];
@@ -32,16 +32,22 @@ export class BlogComponent implements OnInit {
     this.postsResult = [];
 
     this.http.get(this.wordpressApi + this.queryTags[code])
-    .subscribe(data => {
-      if (data['found'] <= 0) {
-        return;
+    .subscribe(
+      data => {
+        // take away the loading gif
+        this.fetchingData = false;
+        
+        if (data['found'] <= 0) {
+          return;
+        }
+        for (const key in data['posts']) {
+          this.postsResult.push(data['posts'][key]);
+        }
+      },
+      error => {
+        this.fetchingData = false;
+        this.goTo(code);
       }
-
-      for (const key in data['posts']) {
-        this.postsResult.push(data['posts'][key]);
-      }
-
-      this.fetchingData = false;
-    });
+    );
   }
 }
