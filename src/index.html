@@ -10,30 +10,34 @@
   <script>
     //Credit to Kiril Vatev at https://www.npmjs.com/package/canvas-confetti
     var myCanvas = document.getElementById('canvas');
-    
+    var fireworkEndTime;
     var myConfetti = confetti.create(myCanvas, {
         resize: true,
         useWorker: true
     });
     
     function runIt() {
-      var end = Date.now() + (5 * 1000);
-      var interval = setInterval(function() {
-      if (Date.now() > end) {
-          return clearInterval(interval);
+      // Prevents too much fireworks
+      if (fireworkEndTime && Date.now() < fireworkEndTime) {
+        return;
       }
+      fireworkEndTime = Date.now() + (5 * 1000);
+      var interval = setInterval(function() {
+        if (Date.now() > fireworkEndTime) {
+            return clearInterval(interval);
+        }
 
-      confetti({
-          startVelocity: 30,
-          spread: 360,
-          particleCount: 200,
-          ticks: 60,
-          shapes: ['square', 'circle'],
-          origin: {
-              x: Math.random(),
-              y: Math.random() - 0.2
-          }
-      });
+        confetti({
+            startVelocity: 30,
+            spread: 360,
+            particleCount: 200,
+            ticks: 60,
+            shapes: ['square', 'circle'],
+            origin: {
+                x: Math.random(),
+                y: Math.random() - 0.2
+            }
+        });
       }, 200);
     }
 </script>
