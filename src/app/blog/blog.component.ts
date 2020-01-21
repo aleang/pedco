@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class BlogComponent implements OnInit {
   private blogLinks: string[];
   private queryTags: string[];
+  private requiredFields: string[];
   private wordpressApi: string;
   postsResult: any[];
   fetchingData: boolean;
@@ -17,21 +18,32 @@ export class BlogComponent implements OnInit {
     this.wordpressApi = 'https://public-api.wordpress.com/rest/v1.1/sites/pedallingcontinents.wordpress.com/posts/?';
     this.blogLinks = ['tag/trip-status/', 'tag/dear-food-diary', 'category/report-card', 'tag/shoestring-travel'];
     this.queryTags = ['tag=trip-status/', 'tag=dear-food-diary', 'category=Report%20Card', 'tag=shoestring-travel'];
+    this.requiredFields = ['title', 'short_URL', 'date'];
     this.postsResult = [];
     this.fetchingData = false;
   }
 
   ngOnInit(): void {}
 
-  goTo(code: number): void {
-    window.open('https://pedallingcontinents.wordpress.com/' + this.blogLinks[code]);
+  goTo(query: string): void {
+    window.open('https://pedallingcontinents.wordpress.com/' + query);
   }
 
+  @ViewChild("queryBox", {static: false}) queryField: ElementRef;
+  focusOnSearch(): void {
+    this.queryField.nativeElement.focus();
+  }
   getPosts(code: number): void {
+    this.getPostsByQuery(this.queryTags[code]);
+  }
+  aggregateRequiredFields(): string {
+    return this.requiredFields.reduce((prev, curr) => prev + ',' + curr);
+  }
+  getPostsByQuery(query: string): void {
     this.fetchingData = true;
     this.postsResult = [];
 
-    this.http.get(this.wordpressApi + this.queryTags[code])
+    this.http.get(this.wordpressApi + query + '&fields=' + this.aggregateRequiredFields())
     .subscribe(
       data => {
         // take away the loading gif
@@ -48,7 +60,7 @@ export class BlogComponent implements OnInit {
       // if fails, take user to the WordPress page with search tags
       error => {
         this.fetchingData = false;
-        this.goTo(code);
+        //this.goTo(this.blogLinks[code]);
         return;
       }
     );
