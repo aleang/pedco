@@ -10,35 +10,39 @@
   <script>
     //Credit to Kiril Vatev at https://www.npmjs.com/package/canvas-confetti
     var myCanvas = document.getElementById('canvas');
-    
+    var fireworkEndTime;
     var myConfetti = confetti.create(myCanvas, {
         resize: true,
         useWorker: true
     });
     
     function runIt() {
-      var end = Date.now() + (5 * 1000);
-      var interval = setInterval(function() {
-      if (Date.now() > end) {
-          return clearInterval(interval);
+      // Prevents too much fireworks
+      if (fireworkEndTime && Date.now() < fireworkEndTime) {
+        return;
       }
+      fireworkEndTime = Date.now() + (5 * 1000);
+      var interval = setInterval(function() {
+        if (Date.now() > fireworkEndTime) {
+            return clearInterval(interval);
+        }
 
-      confetti({
-          startVelocity: 30,
-          spread: 360,
-          particleCount: 200,
-          ticks: 60,
-          shapes: ['square', 'circle'],
-          origin: {
-              x: Math.random(),
-              y: Math.random() - 0.2
-          }
-      });
+        confetti({
+            startVelocity: 30,
+            spread: 360,
+            particleCount: 200,
+            ticks: 60,
+            shapes: ['square', 'circle'],
+            origin: {
+                x: Math.random(),
+                y: Math.random() - 0.2
+            }
+        });
       }, 200);
     }
 </script>
 <link rel="stylesheet" href="styles.2f91197f9f075f56a6a5.css"></head>
 <body>
   <app-root></app-root>
-<script src="runtime-es2015.edb2fcf2778e7bf1d426.js" type="module"></script><script src="runtime-es5.edb2fcf2778e7bf1d426.js" nomodule defer></script><script src="polyfills-es5.6696c533341b95a3d617.js" nomodule defer></script><script src="polyfills-es2015.2987770fde9daa1d8a2e.js" type="module"></script><script src="main-es2015.1cb9bd1f6b3b298129c7.js" type="module"></script><script src="main-es5.1cb9bd1f6b3b298129c7.js" nomodule defer></script></body>
+<script src="runtime-es2015.edb2fcf2778e7bf1d426.js" type="module"></script><script src="runtime-es5.edb2fcf2778e7bf1d426.js" nomodule defer></script><script src="polyfills-es5.6696c533341b95a3d617.js" nomodule defer></script><script src="polyfills-es2015.2987770fde9daa1d8a2e.js" type="module"></script><script src="main-es2015.62549edfe57ce6784107.js" type="module"></script><script src="main-es5.62549edfe57ce6784107.js" nomodule defer></script></body>
 </html>
