@@ -14,7 +14,7 @@ export class BlogComponent implements OnInit {
   fetchingData: boolean;
 
   constructor(private http: HttpClient) {
-    this.wordpressApi = 'https://public-api.wordpress.com/rest/v1.1/sites/pedallingcontinents.wordpress.com/posts/';
+    this.wordpressApi = 'https://public-api.wordpress.com/rest/v1.1/sites/pedallingcontinents.wordpress.com/posts/?';
     this.blogLinks = ['tag/trip-status/', 'tag/dear-food-diary', 'category/report-card', 'tag/shoestring-travel'];
     this.queryTags = ['tag=trip-status/', 'tag=dear-food-diary', 'category=Report%20Card', 'tag=shoestring-travel'];
     this.postsResult = [];
@@ -44,9 +44,12 @@ export class BlogComponent implements OnInit {
           this.postsResult.push(data['posts'][key]);
         }
       },
+
+      // if fails, take user to the WordPress page with search tags
       error => {
         this.fetchingData = false;
         this.goTo(code);
+        return;
       }
     );
   }
