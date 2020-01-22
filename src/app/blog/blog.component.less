@@ -1,15 +1,24 @@
 .mat-icon {
     float: left;
-    padding: .3em 0.1em;
-    position: relative;
-    font-size: large;
-    margin-right: .5em;
+    padding: 0.3em 0.1em;
+    font-size: medium;
+    margin-right: 0.5em;
+}
+h3 {
+    line-height: 2em;
+}
+input {
+    width: 80%;
+    padding: .5em;
+}
+button {
+    padding: .5em;
+    width: 15%;
 }
 .loading-results>div {
     text-align: center;
     width: 100%
 }
-
 .lds-dual-ring {
     display: inline-block;
     margin: auto 0;
@@ -34,5 +43,25 @@ content: " ";
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+.published-date {
+    display: block;
+    font-style: italic;
+}
+
+@media screen and (max-width: 575px) {
+    .published-date {
+        display: none;
+    }
+
+    li {
+        max-width: 70%;
+    }
+    input, button {
+        width: 100%;
+        width: -moz-available;
+        width: -webkit-fill-available;
+        width: stretch;
     }
 }

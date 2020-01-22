@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -9,48 +9,83 @@ import { HttpClient } from '@angular/common/http';
 export class BlogComponent implements OnInit {
   private blogLinks: string[];
   private queryTags: string[];
+  private requiredFields: string[];
   private wordpressApi: string;
-  postsResult: any[];
+  postsResult: WordPressPost[];
   fetchingData: boolean;
+  showNoResult: boolean;
 
   constructor(private http: HttpClient) {
     this.wordpressApi = 'https://public-api.wordpress.com/rest/v1.1/sites/pedallingcontinents.wordpress.com/posts/?';
     this.blogLinks = ['tag/trip-status/', 'tag/dear-food-diary', 'category/report-card', 'tag/shoestring-travel'];
     this.queryTags = ['tag=trip-status/', 'tag=dear-food-diary', 'category=Report%20Card', 'tag=shoestring-travel'];
-    this.postsResult = [];
+    this.requiredFields = ['title', 'short_URL', 'date'];
     this.fetchingData = false;
+    this.showNoResult = false;
   }
 
   ngOnInit(): void {}
 
-  goTo(code: number): void {
-    window.open('https://pedallingcontinents.wordpress.com/' + this.blogLinks[code]);
+  goTo(query: string) {
+    window.open('https://pedallingcontinents.wordpress.com/' + query);
   }
 
-  getPosts(code: number): void {
+  goToPost(url: string) {
+    window.open(url);
+  }
+
+  @ViewChild("queryBox", {static: false}) queryField: ElementRef;
+  focusOnSearch() {
+    this.queryField.nativeElement.focus();
+  }
+
+  getPosts(code: number) {
+    this.getPostsByQuery(this.queryTags[code]);
+  }
+
+  getRequiredFieldsQueryString(): string {
+    return '&fields=' + this.requiredFields.reduce((prev, curr) => prev + ',' + curr);
+  }
+  
+  getPostBySearch(search: string) {
+    this.getPostsByQuery('search=' + search.trim());
+  }
+  
+  getPostsByQuery(query: string) {
     this.fetchingData = true;
+    this.showNoResult = false;
     this.postsResult = [];
 
-    this.http.get(this.wordpressApi + this.queryTags[code])
+    this.http.get<WordPressPost>(this.wordpressApi + query + this.getRequiredFieldsQueryString())
     .subscribe(
       data => {
-        // take away the loading gif
         this.fetchingData = false;
-        
+
         if (data['found'] <= 0) {
+          this.showNoResult = true;
           return;
         }
+        
+        this.showNoResult = false;
+        
         for (const key in data['posts']) {
           this.postsResult.push(data['posts'][key]);
         }
+        
+        this.postsResult.sort( (a, b) => a.date.getTime() - b.date.getTime());
       },
 
-      // if fails, take user to the WordPress page with search tags
       error => {
         this.fetchingData = false;
-        this.goTo(code);
+        this.showNoResult = true;
         return;
       }
     );
   }
+}
+
+export class WordPressPost {
+  title: string;
+  short_URL: string;
+  date: Date;
 }
