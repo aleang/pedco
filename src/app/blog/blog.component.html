@@ -28,7 +28,7 @@
 
     <div class="column blog" (click)="focusOnSearch()">
         <h3><mat-icon>search</mat-icon>Search the Blog</h3>
-        <input #queryBox (keydown.enter)="getPostsByQuery('search=' + queryBox.value)" />
+        <input #queryBox (keydown.enter)="getPostsBySearch(queryBox.value)" />
         <button (click)="getPostsBySearch(queryBox.value)">Search</button>
   </div>
 </div>

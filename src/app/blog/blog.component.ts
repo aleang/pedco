@@ -47,10 +47,12 @@ export class BlogComponent implements OnInit {
   getRequiredFieldsQueryString(): string {
     return '&fields=' + this.requiredFields.reduce((prev, curr) => prev + ',' + curr);
   }
+  
   getOrderByDate(): string{
     return '&order_by=date';
   }
-  getPostBySearch(search: string) {
+
+  getPostsBySearch(search: string) {
     this.getPostsByQuery('search=' + search.trim());
   }
   
