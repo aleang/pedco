@@ -22,6 +22,7 @@ export class BlogComponent implements OnInit {
     this.requiredFields = ['title', 'short_URL', 'date'];
     this.fetchingData = false;
     this.showNoResult = false;
+    this.postsResult = [];
   }
 
   ngOnInit(): void {}
@@ -46,7 +47,9 @@ export class BlogComponent implements OnInit {
   getRequiredFieldsQueryString(): string {
     return '&fields=' + this.requiredFields.reduce((prev, curr) => prev + ',' + curr);
   }
-  
+  getOrderByDate(): string{
+    return '&order_by=date';
+  }
   getPostBySearch(search: string) {
     this.getPostsByQuery('search=' + search.trim());
   }
@@ -56,7 +59,7 @@ export class BlogComponent implements OnInit {
     this.showNoResult = false;
     this.postsResult = [];
 
-    this.http.get<WordPressPost>(this.wordpressApi + query + this.getRequiredFieldsQueryString())
+    this.http.get<WordPressPost>(this.wordpressApi + query + this.getOrderByDate() + this.getRequiredFieldsQueryString())
     .subscribe(
       data => {
         this.fetchingData = false;
@@ -71,8 +74,6 @@ export class BlogComponent implements OnInit {
         for (const key in data['posts']) {
           this.postsResult.push(data['posts'][key]);
         }
-        
-        this.postsResult.sort( (a, b) => a.date.getTime() - b.date.getTime());
       },
 
       error => {
