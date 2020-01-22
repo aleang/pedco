@@ -38,12 +38,13 @@
         <div class="lds-dual-ring"></div>
     </div>
     <h4 *ngIf="postsResult.length>0">Here are the posts:</h4>
+    <h4 *ngIf="showNoResult">Sorry, no posts found.</h4>
 </div>
 <div class="row">
     <ul>
-        <li *ngFor="let post of postsResult">
+        <li *ngFor="let post of postsResult" title="{{post.title}}" (click)="goToPost(post.short_URL)">
             <span class="published-date">{{post.date | date:'d MMMM, y'}}</span>
-            <a href="{{post.short_URL}}" target="_blank" innerHTML="{{post.title}}"></a>
+            <span [innerHTML]="post.title"></span>
         </li>
     </ul>
 </div>
