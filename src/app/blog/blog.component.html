@@ -29,7 +29,7 @@
     <div class="column blog" (click)="focusOnSearch()">
         <h3><mat-icon>search</mat-icon>Search the Blog</h3>
         <input #queryBox (keydown.enter)="getPostsByQuery('search=' + queryBox.value)" />
-        <button (click)="getPostsByQuery('search=' + queryBox.value)">Search</button>
+        <button (click)="getPostsBySearch(queryBox.value)">Search</button>
   </div>
 </div>
 
@@ -44,7 +44,7 @@
     <ul>
         <li *ngFor="let post of postsResult" title="{{post.title}}" (click)="goToPost(post.short_URL)">
             <span class="published-date">{{post.date | date:'d MMMM, y'}}</span>
-            <span [innerHTML]="post.title"></span>
+            <a [innerHTML]="post.title"></a>
         </li>
     </ul>
 </div>

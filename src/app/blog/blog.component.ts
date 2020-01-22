@@ -11,7 +11,7 @@ export class BlogComponent implements OnInit {
   private queryTags: string[];
   private requiredFields: string[];
   private wordpressApi: string;
-  postsResult: any[];
+  postsResult: WordPressPost[];
   fetchingData: boolean;
   showNoResult: boolean;
 
@@ -20,34 +20,43 @@ export class BlogComponent implements OnInit {
     this.blogLinks = ['tag/trip-status/', 'tag/dear-food-diary', 'category/report-card', 'tag/shoestring-travel'];
     this.queryTags = ['tag=trip-status/', 'tag=dear-food-diary', 'category=Report%20Card', 'tag=shoestring-travel'];
     this.requiredFields = ['title', 'short_URL', 'date'];
-    this.postsResult = [];
     this.fetchingData = false;
     this.showNoResult = false;
   }
 
   ngOnInit(): void {}
 
-  goTo(query: string): void {
+  goTo(query: string) {
     window.open('https://pedallingcontinents.wordpress.com/' + query);
   }
-  goToPost(url: string): void {
+
+  goToPost(url: string) {
     window.open(url);
   }
+
   @ViewChild("queryBox", {static: false}) queryField: ElementRef;
-  focusOnSearch(): void {
+  focusOnSearch() {
     this.queryField.nativeElement.focus();
   }
-  getPosts(code: number): void {
+
+  getPosts(code: number) {
     this.getPostsByQuery(this.queryTags[code]);
   }
+
   getRequiredFieldsQueryString(): string {
     return '&fields=' + this.requiredFields.reduce((prev, curr) => prev + ',' + curr);
   }
-  getPostsByQuery(query: string): void {
+  
+  getPostBySearch(search: string) {
+    this.getPostsByQuery('search=' + search.trim());
+  }
+  
+  getPostsByQuery(query: string) {
     this.fetchingData = true;
+    this.showNoResult = false;
     this.postsResult = [];
 
-    this.http.get(this.wordpressApi + query + this.getRequiredFieldsQueryString())
+    this.http.get<WordPressPost>(this.wordpressApi + query + this.getRequiredFieldsQueryString())
     .subscribe(
       data => {
         this.fetchingData = false;
@@ -62,6 +71,8 @@ export class BlogComponent implements OnInit {
         for (const key in data['posts']) {
           this.postsResult.push(data['posts'][key]);
         }
+        
+        this.postsResult.sort( (a, b) => a.date.getTime() - b.date.getTime());
       },
 
       error => {
@@ -71,4 +82,10 @@ export class BlogComponent implements OnInit {
       }
     );
   }
+}
+
+export class WordPressPost {
+  title: string;
+  short_URL: string;
+  date: Date;
 }
