@@ -4,6 +4,10 @@ Single page app showcasing my adventure with my partner on a 22 months jouney cy
 ## Dashboard
 There's four sections currently, with two currently being worked on: Map and Blog. 
 
+## Run
+Install packages with `npm install` 
+then `ng serve`.
+
 ## Instructions to upload to github pages
 Hosted at aleang.github.io/pedco
 `ng build --prod --base-href="/pedco/"`
