@@ -1,77 +1,103 @@
-<h2>Statistics</h2>
-<div class="chartContainer">
-    <div class="cumulativeDistanceChart">
-        <google-chart #cumulativeDistanceChart
-            [title]="cumulativeDistanceData.title"
-            [type]="cumulativeDistanceData.type"
-            [data]="cumulativeDistanceData.data"
-            [columnNames]="cumulativeDistanceData.columnNames"
-            [options]="cumulativeDistanceData.options"
-            [roles]="cumulativeDistanceData.roles">
-        </google-chart>
+<div class="statContainer statContainer-left">
+    <div class="blurb blurb-left">
+        We left New Zealand on the 17th of March 2018, taking with us two trusty bicycles to China. We landed the next day and assembled our gears at the airport. After several hours we set off. By the seventh of December 2019 we reached our final destination Lisbon, Portugal. As it was coming to winter, we hurried to finish just in time to celebrate Christmas and New Years in the UK.
     </div>
-    <ul>
-        <li><mat-icon>zoom_out_map</mat-icon>Zoom and drag</li>
-        <li><mat-icon>filter_2</mat-icon>Select multiple points</li>
-        <li><mat-icon>mouse</mat-icon>Right-click to reset</li>
-    </ul>   
-</div>
-
-<div class="chartContainer">
-    <div class="distanceChart">
-        <google-chart #distanceChart
-            [title]="distanceData.title"
-            [type]="distanceData.type"
-            [data]="distanceData.data"
-            [columnNames]="distanceData.columnNames"
-            [options]="distanceData.options"
-            [roles]="distanceData.roles">
-        </google-chart>
+    <div class="chartContainer">
+        <div class="cumulativeDistanceChart">
+            <google-chart #cumulativeDistanceChart
+                [title]="cumulativedistanceAverageData.title"
+                [type]="cumulativedistanceAverageData.type"
+                [data]="cumulativedistanceAverageData.data"
+                [columnNames]="cumulativedistanceAverageData.columnNames"
+                [options]="cumulativedistanceAverageData.options"
+                [roles]="cumulativedistanceAverageData.roles">
+            </google-chart>
+        </div>
+        <ul>
+            <li><mat-icon>zoom_out_map</mat-icon>Zoom and drag</li>
+            <li><mat-icon>filter_2</mat-icon>Select multiple points</li>
+            <li><mat-icon>mouse</mat-icon>Right-click to reset zoom</li>
+        </ul>
     </div>
-    <ul>
-        <li><mat-icon>games</mat-icon>Hover to see exact amount by country</li>
-    </ul>
 </div>
-
-<div class="chartContainer">
-    <div class="regionSpendingChart">
-        <google-chart #regionSpendingChart
-            [title]="regionSpendingData.title"
-            [type]="regionSpendingData.type"
-            [data]="regionSpendingData.data"
-            [columnNames]="regionSpendingData.columnNames"
-            [options]="regionSpendingData.options"
-            [roles]="regionSpendingData.roles">
-        </google-chart>
+<div class="statContainer statContainer-right">
+    <div class="blurb blurb-right">
+        The calculation is based on a 5-days-per-week routine. There are two exceptions (Bulgaria and Bosnia-Herzegovina) where we waited for several weeks to get our UK visa. Our general average was between 50-70 km a day. Unfortunately, this chart doesn't show the amount of weight we carried, the passes we had to climb, the detours we had to take, etc. The furthest we got in one day was 170 km.
     </div>
-    <ul>
-        <li><mat-icon>mouse</mat-icon>Left click to move down one level</li>
-        <li><mat-icon>mouse</mat-icon>Right click to move down up level</li>
-    </ul>
-</div>
-
-<div class="chartContainer">
-    <div class="daysChart">
-        <google-chart #daysChart
-            [title]="daysChartData.title"
-            [type]="daysChartData.type"
-            [data]="daysChartData.data"
-            [options]="daysChartData.options"
-        >
-        </google-chart>
+    <div class="chartContainer">
+        <div class="distanceAverageChart">
+            <google-chart #distanceChart
+                [title]="distanceAverageData.title"
+                [type]="distanceAverageData.type"
+                [data]="distanceAverageData.data"
+                [columnNames]="distanceAverageData.columnNames"
+                [options]="distanceAverageData.options"
+                [roles]="distanceAverageData.roles">
+            </google-chart>
+        </div>
+        <ul>
+            <li><mat-icon>games</mat-icon>Hover to see exact amount by country</li>
+        </ul>
     </div>
-    <ul>
-        <li><mat-icon>games</mat-icon>Hover to see exact amount by country</li>
-    </ul>
 </div>
-
-<!-- <div class="chartContainer calendarChart">
-    <google-chart #calendarChart
-        [title]="calendarData.title"
-        [type]="calendarData.type"
-        [data]="calendarData.data"
-        [columnNames]="calendarData.columnNames"
-        [options]="calendarData.options"
-        [roles]="calendarData.roles">
-    </google-chart>
-</div> -->
+<div class="statContainer statContainer-right">
+    <div class="blurb blurb-right">
+        The three outliers (China, Iran and Turkey) were countries we spent most of our time in. Apart from Iran, our general cycling direction was westward. We tried to make the most direct route possible, but occasionally take a different turn to visit something worthwhile. Monaco isn't on here but take the record for the shortest distance cycled (less than 1 km).
+    </div>
+    <div class="chartContainer">
+        <div class="distanceChart">
+            <google-chart #distanceChart
+                [title]="distanceChartData.title"
+                [type]="distanceChartData.type"
+                [data]="distanceChartData.data"
+                [options]="distanceChartData.options"
+            >
+            </google-chart>
+        </div>
+        <ul>
+            <li><mat-icon>games</mat-icon>Hover to see exact amount by country</li>
+        </ul>
+    </div>
+</div>
+<div class="statContainer statContainer-left">
+    <div class="blurb blurb-left">
+    Some people may be surprised by the amount we spent. For two people it cost us roughly NZ$9100 (£4500, US$5700). We got lucky with the NZ passport giving us visa free access to 12/17 countries. Europe was the most expensive region and Central Asia being the cheapest. Central Asia and the Middle East were great for wild camping, good exchange rates and incredible hospitality from the locals.
+    </div>
+    <div class="chartContainer">
+        <div class="regionSpendingChart">
+            <google-chart #regionSpendingChart
+                [title]="regionSpendingChartConfig.title"
+                [type]="regionSpendingChartConfig.type"
+                [data]="regionSpendingChartConfig.data"
+                [columnNames]="regionSpendingChartConfig.columnNames"
+                [options]="regionSpendingChartConfig.options"
+                [roles]="regionSpendingChartConfig.roles">
+            </google-chart>
+        </div>
+        <ul>
+            <li><mat-icon>mouse</mat-icon>Left click to move down one level</li>
+            <li><mat-icon>mouse</mat-icon>Right click to move down up level</li>
+        </ul>
+    </div>
+</div>
+<div class="statContainer statContainer-left">
+    <div class="blurb blurb-left">
+    Our voyage took about 628 days. Middle East was the region we were most curious about so understandably spent the most generous amount of time. Europe came in second because we had to wait while applying for the UK visas. We wanted to spend more time in western Europe but due to budget and time restrictions, we had to complete the trip sooner than we had wanted.
+    </div>
+    <div class="chartContainer">
+        <div class="regionDaysChart">
+            <google-chart #regionDaysChart
+                [title]="regionDaysChartConfig.title"
+                [type]="regionDaysChartConfig.type"
+                [data]="regionDaysChartConfig.data"
+                [columnNames]="regionDaysChartConfig.columnNames"
+                [options]="regionDaysChartConfig.options"
+                [roles]="regionDaysChartConfig.roles">
+            </google-chart>
+        </div>
+        <ul>
+            <li><mat-icon>mouse</mat-icon>Left click to move down one level</li>
+            <li><mat-icon>mouse</mat-icon>Right click to move down up level</li>
+        </ul>
+    </div>
+</div>

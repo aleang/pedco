@@ -1,11 +1,25 @@
+.statContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 3em;
+    
+    &-right {
+        flex-direction: row-reverse;
+    }
+
+    h3 {
+        font-style: italic;
+    }
+}
+
 .chartContainer {
     padding: 2em;
     background-color: white;
     color: darkslategray;
     width: 500px;
-    margin-bottom: 3em;
+   
     box-shadow: 3px 3px 12px 0px black;
-
     li {
         font-size: 12px;
         color: white;
@@ -24,12 +38,67 @@
         background: dimgrey;
     }
 }
+.blurb {
+    width: 200px;
+    line-height: 2;
+    padding-top: 30px;
+    font-size: 12px;
+    animation: make-appear;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    opacity: 0;
+    animation-fill-mode: forwards;
 
-.distanceChart {
+    &-left {
+        text-align: right;
+        margin-right: 10px;
+    }
+    &-right {
+        text-align: left;
+        margin-left: 10px;
+    }
 }
 
-.regionSpendingChart {
+@keyframes make-appear {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+.chart-right {
+    margin-left: 250px;
 }
 
-.daysChart {
+.chart-left {
+    margin-right: 250px;
+}
+
+@media screen and (max-width: 810px) {
+    .statContainer {
+        width: 575px;
+        flex-direction: column-reverse;
+        align-items: center;
+        
+        h3 {
+            margin-bottom: 0;
+        }
+        .blurb {
+            text-align: left;
+            padding: 1em 3em 0 3em;
+            width: 80%;
+            line-height: 1.4;
+        }
+    }  
+    ul {
+        display: none;
+    } 
+}
+
+@media screen and (max-width: 575px) {
+    .chartContainer {
+        transform-origin: top center;
+        transform: scale(0.7);        
+    }
+    .statContainer {
+        width: 100%;
+    }
 }

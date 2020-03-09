@@ -11,26 +11,33 @@ import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
 })
 export class StatisticsComponent implements OnInit {
   
-  distanceData: any;
-  cumulativeDistanceData: any;
-  regionSpendingData: any;
-  regionData: any;
+  distanceAverageData: any;
+  cumulativedistanceAverageData: any;
   calendarData: any;
-  daysChartData: any;
+  distanceChartData: any;
   baseChartOptions: any;
+  
+  regionSpendingData: any;
+  regionSpendingChartConfig: any;
+
+  regionDaysData: any;
+  regionDaysChartConfig: any;
 
   constructor() {
     this.baseChartOptions = {
       width: 500,
     }
 
-    this.distanceData = this.getDistanceChartConfig();
-    this.cumulativeDistanceData = this.getCumulativeDistanceChartConfig();
-    this.regionData = this.getData('region');
-    this.regionSpendingData = this.getRegionSpendingDataConfig();
-    this.daysChartData = this.getDaysChartDataConfig();
-    //this.calendarData = this.get
+    this.distanceAverageData = this.getDistanceAverageChartConfig();
+    this.cumulativedistanceAverageData = this.getCumulativeDistanceChartConfig();
+    this.distanceChartData = this.getDistanceChartDataConfig();
 
+    this.regionSpendingData = this.getData('regionSpending');
+    this.regionSpendingChartConfig = this.getRegionSpendingChartConfig();
+
+    this.regionDaysData = this.getData('regionDays');
+    this.regionDaysChartConfig = this.getRegionDaysDataConfig();
+    
     
   }
 
@@ -47,17 +54,11 @@ export class StatisticsComponent implements OnInit {
         data.push([country.dateLeft, cumulativeTotal]);
       });
       return data;
-      // return [
-        
-      //   [COUNTRIES[0].dateLeft, COUNTRIES[0].distanceCycled, COUNTRIES[0].distanceCycled],
-      //   [new Date(2019, 3, 1),  660,       1120],
-      //   [new Date(2019, 11, 11),  1030,      540]
-      // ];
-    } else if (key === 'days') {
-      return COUNTRIES.map(country => {
-        return [country.name, country.daysCycled]
-      });
     } else if (key === 'distance') {
+      return COUNTRIES.map(country => {
+        return [country.name, country.distanceCycled]
+      });
+    } else if (key === 'distanceAverage') {
       return COUNTRIES.map(country => {
         return [
           country.name,
@@ -65,7 +66,7 @@ export class StatisticsComponent implements OnInit {
           country.color,
           country.name
         ]});
-    } else if (key === 'region') { 
+    } else if (key === 'regionSpending') { 
       let data = [
         ['China to Portugal',null,0,0],
         ['East Asia','China to Portugal',0,0],
@@ -77,28 +78,40 @@ export class StatisticsComponent implements OnInit {
         data.push([c.name, c.region, c.daysCycled * c.averageDailySpend, c.averageDailySpend]);
       });
       return data;
+    } else if (key === 'regionDays') { 
+      let data = [
+        ['China to Portugal',null,0,0],
+        ['East Asia','China to Portugal',0,0],
+        ['Central Asia','China to Portugal',0,0],
+        ['Middle East','China to Portugal',0,0],
+        ['Europe','China to Portugal',0,0],
+      ];
+      COUNTRIES.forEach(c => {
+        data.push([c.name, c.region, c.daysCycled, c.daysCycled]);
+      });
+      return data;
     }
   }
   // *** Charts configurations ******************************
-  getDaysChartDataConfig(): any {
+  getDistanceChartDataConfig(): any {
     return {
-      title: 'Days Spent in each Country',
+      title: 'Distance Cycled per Country',
       type: 'Histogram',
-      data: this.getData('days'),
+      data: this.getData('distance'),
       
       options: {
         ...this.baseChartOptions,
         ...{
           legend: { position: 'none' },
-          histogram: { bucketSize: 20 },
+          histogram: { bucketSize: 200 },
           colors: ['#3cc37d'],
           height: 300,
-          vAxis: { textPosition: 'none' }
+          vAxis: { textPosition: 'none' },
+          chartArea: { width:400, height: 200 }
         }
       }
     };
   }
-  
   getCumulativeDistanceChartConfig() {
     return {
       type: 'AreaChart',
@@ -120,11 +133,11 @@ export class StatisticsComponent implements OnInit {
       },
     };
   }
-  getDistanceChartConfig() {
+  getDistanceAverageChartConfig() {
     return {
       title: 'Average Daily Distance (km)',
       type: 'BarChart',
-      data: this.getData('distance'),
+      data: this.getData('distanceAverage'),
       columnNames: ['Country', 'Distance'],
       options: {
         ...this.baseChartOptions, 
@@ -150,11 +163,11 @@ export class StatisticsComponent implements OnInit {
     };
   }
 
-  getRegionSpendingDataConfig() {
+  getRegionSpendingChartConfig() {
     return {
       title: 'Money Spent by Country and Region ($NZD)',
       type: 'TreeMap',
-      data: this.regionData,
+      data: this.regionSpendingData,
       options: {
         ...this.baseChartOptions,
         ...{
@@ -162,9 +175,9 @@ export class StatisticsComponent implements OnInit {
           midColor: '#8adbb1',
           maxColor: '#3cc37d',
           highlightOnMouseOver: true,
-          minHighlightColor: '#c9c9c9',
-          midHighlightColor: '#bababa',
-          maxHighlightColor: '#999999',
+          minHighlightColor: '#f8eaa0',
+          midHighlightColor: '#f4df71',
+          maxHighlightColor: '#f2d43d',
           headerHeight: 15,
           fontColor: 'black',
           showScale: true,
@@ -172,24 +185,66 @@ export class StatisticsComponent implements OnInit {
           maxPostDepth: 3,
           useWeightedAverageForAggregation: true,
           showTooltips: true,
-          generateTooltip: this.showStaticTooltip.bind(this),
+          generateTooltip: this.showSpendingTooltip.bind(this),
           fontFamily: 'sans-serif',
           height: 300,
         }
       },
     };
   }
-
-  showStaticTooltip(row, size, value) {
+  getRegionDaysDataConfig() {
+    return {
+      title: 'Days Stayed in each Country and Region',
+      type: 'TreeMap',
+      data: this.regionDaysData,
+      options: {
+        ...this.baseChartOptions,
+        ...{
+          minColor: '#d8f3e5',
+          midColor: '#8adbb1',
+          maxColor: '#3cc37d',
+          highlightOnMouseOver: true,
+          minHighlightColor: '#f8eaa0',
+          midHighlightColor: '#f4df71',
+          maxHighlightColor: '#f2d43d',
+          headerHeight: 15,
+          fontColor: 'black',
+          showScale: true,
+          maxDepth: 2,
+          maxPostDepth: 3,
+          useWeightedAverageForAggregation: true,
+          showTooltips: true,
+          generateTooltip: this.showDaysTooltip.bind(this),
+          fontFamily: 'sans-serif',
+          height: 300,
+        }
+      },
+    };
+  }
+  showSpendingTooltip(row, size, value) {
     return `<div style="background: white;
-      border-radius: 5px;
-      padding: 5px;
-      border: 1px solid grey;
-      color: black;
-      font-family: sans-serif;
-      font-size: xx-small;
-      margin-left: 5px;
-      margin-top: 5px;">` +
-    `<strong>${this.regionData[row][0]}</strong> $${Math.round(size)}</div>`;
+    padding: 5px;
+    color: #f9f9cd;
+    font-family: sans-serif;
+    font-size: xx-small;
+    margin-left: 5px;
+    margin-top: 5px;
+    background-color: #aa8c03;
+    border-left: #574301 solid 0.5em;">` +
+    `<strong style="display:block;">${this.regionSpendingData[row][0]}</strong> $${Math.round(size)}</div>`;
+  }
+  showDaysTooltip(row, size, value) {
+    return `<div style="background: white;
+    color: #f9f9cd;
+    font-family: sans-serif;
+    font-size: xx-small;
+    margin-left: 5px;
+    margin-top: 5px;
+    background-color: #333;
+    padding: 2px 10px 5px;
+    border-top: 5px solid red;
+    margin-right: 5px;
+    text-align: center;">` +
+    `<strong style="display:block;">${this.regionSpendingData[row][0]}</strong>${Math.round(size)} Days</div>`;
   }
 }
