@@ -57,10 +57,10 @@ export class BlogComponent implements OnInit {
   }
   
   getPostsByQuery(query: string) {
+    document.querySelector('.loading-results').scrollIntoView();
     this.fetchingData = true;
     this.showNoResult = false;
     this.postsResult = [];
-
     this.http.get<WordPressPost>(this.wordpressApi + query + this.getOrderByDate() + this.getRequiredFieldsQueryString())
     .subscribe(
       data => {
@@ -76,6 +76,10 @@ export class BlogComponent implements OnInit {
         for (const key in data['posts']) {
           this.postsResult.push(data['posts'][key]);
         }
+        setTimeout(() => {
+          document.querySelector('#github-link').scrollIntoView();
+        }, 500);
+        
       },
 
       error => {

@@ -1,29 +1,42 @@
-<div class="row">
+<h2>Blog</h2>
+<p>
+    Our WordPress blog host all the stories, photos and travel information we think will be helpful and inspire others to take up tour cycling. Since completing the trip, we have been posting less as we settle down in London, but don't worry, there are plenty more stories to share.
+</p>
+
+<div class="row row-first">
     <div class="column blog" (click)="getPosts(0)">        
         <h3><mat-icon>flag</mat-icon>Trip Status</h3>        
-        Our route was separated into segments and they were blogged at the end of each. We look back at how far we have cycled, share some interesting experiences and look at what's next.
+        <span>
+            Our route was separated into segments and they were blogged at the end of each. We look back at how far we have cycled, share some interesting experiences and look at what's next.
+        </span>
     </div>
 
     <div class="column blog" (click)="getPosts(1)">        
         <h3><mat-icon>fastfood</mat-icon>Dear Food Diary</h3>
-        Food glorious food - all the wonderful food eated during the trip. The amount of food we have eaten is tremendous, so doing a long cycling trip like this justified all that eating.
+        <span>
+            Food glorious food - all the wonderful food eated during the trip. The amount of food we have eaten is tremendous, so doing a long cycling trip like this justified all that eating.
+        </span>
     </div>
 </div>
-<div class="row">
+<div class="row row-second">
     <div class="column blog" (click)="getPosts(2)">        
         <h3><mat-icon>class</mat-icon>Report Card</h3>
-        Each country was given a grade based on our travel experience as tour cyclists. We share information that may be useful for other travellers that are considering doing a similar trip to this country.
+        <span>
+            Each country was given a grade based on our travel experience as tour cyclists. We share information that may be useful for other travellers that are considering doing a similar trip to this country.
+        </span>
     </div>
 
     <div class="column blog" (click)="getPosts(3)">
         <h3><mat-icon>money_off</mat-icon>On a Shoestring Budget</h3>
-        Day trips on a shoestring budget to some of the world's most famous cities. Cities are usually the place we spend most of our budget but with a bit of research, enjoying the city shouldn't cost the earth. 
+        <span>
+            Day trips on a shoestring budget to some of the world's most famous cities. Cities are usually the place we spend most of our budget but with a bit of research, enjoying the city shouldn't cost the earth.
+        </span>
   </div>
 </div>
-<div class="row">
+<div class="row row-third">
     <div class="column blog" (click)="getPostsByQuery('')">        
         <h3><mat-icon>update</mat-icon>Get Latest</h3>
-        Load the latest 20 posts.
+        <span>Load the latest 20 posts.</span>
     </div>
 
     <div class="column blog" (click)="focusOnSearch()">
