@@ -1,3 +1,8 @@
+@small-screen-scale: 0.7;
+@chart-width: 500px;
+@chart-height-400: 400px;
+@chart-height-300: 300px;
+
 .statContainer {
     display: flex;
     justify-content: center;
@@ -17,9 +22,9 @@
     padding: 2em;
     background-color: white;
     color: darkslategray;
-    width: 500px;
-   
+    width: @chart-width;
     box-shadow: 3px 3px 12px 0px black;
+
     li {
         font-size: 12px;
         color: white;
@@ -95,8 +100,19 @@
 
 @media screen and (max-width: 575px) {
     .chartContainer {
-        transform-origin: top center;
-        transform: scale(0.7);        
+        width: @chart-width * @small-screen-scale;
+        
+        div {
+            transform: scale(@small-screen-scale);
+            transform-origin: top left;
+        }
+    }
+    .height-400 {
+        height: calc(@small-screen-scale * @chart-height-400);
+    }
+    
+    .height-300 {
+        height: calc(@small-screen-scale * @chart-height-300);
     }
     .statContainer {
         width: 100%;

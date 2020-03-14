@@ -1,8 +1,9 @@
+<h2>Statistics</h2>
 <div class="statContainer statContainer-left">
     <div class="blurb blurb-left">
         We left New Zealand on the 17th of March 2018, taking with us two trusty bicycles to China. We landed the next day and assembled our gears at the airport. After several hours we set off. By the seventh of December 2019 we reached our final destination Lisbon, Portugal. As it was coming to winter, we hurried to finish just in time to celebrate Christmas and New Years in the UK.
     </div>
-    <div class="chartContainer">
+    <div class="chartContainer height-400">
         <div class="cumulativeDistanceChart">
             <google-chart #cumulativeDistanceChart
                 [title]="cumulativedistanceAverageData.title"
@@ -24,7 +25,7 @@
     <div class="blurb blurb-right">
         The calculation is based on a 5-days-per-week routine. There are two exceptions (Bulgaria and Bosnia-Herzegovina) where we waited for several weeks to get our UK visa. Our general average was between 50-70 km a day. Unfortunately, this chart doesn't show the amount of weight we carried, the passes we had to climb, the detours we had to take, etc. The furthest we got in one day was 170 km.
     </div>
-    <div class="chartContainer">
+    <div class="chartContainer height-300">
         <div class="distanceAverageChart">
             <google-chart #distanceChart
                 [title]="distanceAverageData.title"
@@ -44,7 +45,7 @@
     <div class="blurb blurb-right">
         The three outliers (China, Iran and Turkey) were countries we spent most of our time in. Apart from Iran, our general cycling direction was westward. We tried to make the most direct route possible, but occasionally take a different turn to visit something worthwhile. Monaco isn't on here but take the record for the shortest distance cycled (less than 1 km).
     </div>
-    <div class="chartContainer">
+    <div class="chartContainer height-400">
         <div class="distanceChart">
             <google-chart #distanceChart
                 [title]="distanceChartData.title"
@@ -63,7 +64,7 @@
     <div class="blurb blurb-left">
     Some people may be surprised by the amount we spent. For two people it cost us roughly NZ$9100 (£4500, US$5700). We got lucky with the NZ passport giving us visa free access to 12/17 countries. Europe was the most expensive region and Central Asia being the cheapest. Central Asia and the Middle East were great for wild camping, good exchange rates and incredible hospitality from the locals.
     </div>
-    <div class="chartContainer">
+    <div class="chartContainer height-300">
         <div class="regionSpendingChart">
             <google-chart #regionSpendingChart
                 [title]="regionSpendingChartConfig.title"
@@ -84,7 +85,7 @@
     <div class="blurb blurb-left">
     Our voyage took about 628 days. Middle East was the region we were most curious about so understandably spent the most generous amount of time. Europe came in second because we had to wait while applying for the UK visas. We wanted to spend more time in western Europe but due to budget and time restrictions, we had to complete the trip sooner than we had wanted.
     </div>
-    <div class="chartContainer">
+    <div class="chartContainer height-300">
         <div class="regionDaysChart">
             <google-chart #regionDaysChart
                 [title]="regionDaysChartConfig.title"
