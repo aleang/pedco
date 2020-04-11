@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PHOTOS } from '../../assets/photo-data';
 import { HostListener } from '@angular/core';
+// @ts-ignore
 import { EXIF } from 'exif-js';
+//import { EXIF as exifShim, EXIFStatic } from 'exif-js/exif';
 
 @Component({
   selector: 'app-photo',
