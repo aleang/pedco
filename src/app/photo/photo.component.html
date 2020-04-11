@@ -1,0 +1,32 @@
+<div class="photo-box">
+    <img src="assets/photos/{{getCurrentImageFileName()}}" (load)="onLoadImage()" id="photo"/>
+</div>
+<div class="info-bar">
+    <div class="controller fade-out-segment {{displayInfoBar()}}">
+        <div class="controller-wrapper">
+            <span class="button" (click)="nextPhoto(false)">
+                <mat-icon>keyboard_arrow_left</mat-icon>
+            </span>
+            <span title="Press Up/Down to show/hide the caption bar. Click here to see a random photo."
+                (click)="randomPhoto()"
+                class="button">
+                <mat-icon>info</mat-icon>
+            </span>
+            <span class="button" (click)="nextPhoto(true)">
+                <mat-icon>keyboard_arrow_right</mat-icon>
+            </span>
+        </div>
+    </div>
+    <div class="caption fade-out-segment {{displayInfoBar()}}">
+        <div class="caption-wrapper">
+            <div class="caption-text" innerHtml={{imageCaption}}></div>
+            <div class="caption-date">{{imageDate | date:'longDate'}}</div>
+        </div>
+       
+    </div>
+    <div class="map">
+        <a href="https://www.google.com/maps/d/viewer?z=5&mid=1N2KbOB6BV77lcvQUWlmVyWKsTGw&ll={{imageLatLon}}" target="_blank">
+            <img src='{{getMapByApi()}}'>
+        </a>
+    </div>
+</div>

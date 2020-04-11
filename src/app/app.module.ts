@@ -12,6 +12,7 @@ import { MatIconModule, MatIcon } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { PhotoComponent } from './photo/photo.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { GoogleChartsModule } from 'angular-google-charts';
     DashboardComponent,
     CountryDetailsComponent,
     BlogComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    PhotoComponent
   ],
   imports: [
     BrowserModule,

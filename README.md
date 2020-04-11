@@ -1,8 +1,5 @@
 # PedallingContinents
-Single page app showcasing my adventure with my partner on a 22 months jouney cycling from China to Portugal.
-
-## Dashboard
-There's four sections currently, with two currently being worked on: Map and Blog. 
+Single page app travel blog of my adventure with my partner on a 22 months jouney cycling from China to Portugal.
 
 ## Run
 Install packages with `npm install` 
