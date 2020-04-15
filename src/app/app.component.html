@@ -1,28 +1,9 @@
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.3/dist/confetti.browser.min.js"></script>
-<script>
-  var myCanvas = document.createElement('canvas');
-  document.appendChild(myCanvas);
-
-  var myConfetti = confetti.create(myCanvas, {
-  resize: true,
-  useWorker: true
-  });
-  
-  myConfetti({
-  particleCount: 100,
-  spread: 160
-  // any other options from the global
-  // confetti function
-  });
-
-  confetti();
-</script>
 <!-- Navigation Toolbar -->
 <div class="toolbar" role="banner">
   <h2>
     <a routerLink="/dashboard">
-      <span *ngIf="router.url !== '/dashboard'"><mat-icon>arrow_back</mat-icon></span> 
-      {{title}}
+      <span *ngIf="router.url !== '/dashboard'"><mat-icon>arrow_back</mat-icon></span>
+      <span *ngIf="router.url === '/dashboard'" onclick="runIt()">{{title}}</span>
     </a>
   </h2>
   <div class="spacer"></div>
