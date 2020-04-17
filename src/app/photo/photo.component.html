@@ -1,30 +1,52 @@
+<h2 id="portrait-mode-message">
+    <mat-icon>screen_rotation</mat-icon><br>
+    Please rotate the screen to landscape.
+</h2>
 <div class="photo-box">
-    <img src="https://aleang.github.io/images/{{getCurrentImageFileName()}}" (load)="onLoadImage()" id="photo"/>
+    <img id="photo" src="https://aleang.github.io/images/{{getCurrentImageFileName()}}" (load)="onLoadImage()"/>
 </div>
-<div class="info-bar">
-    <div class="controller fade-out-segment {{displayInfoBar()}}">
+
+<div class="info-bar {{displayInfoBar()}}">
+    <div class="controller fade-out-segment">
         <div class="controller-wrapper">
-            <span class="button" (click)="nextPhoto(false)">
-                <mat-icon>keyboard_arrow_left</mat-icon>
-            </span>
-            <span title="Press Up/Down to show/hide the caption bar. Click here to see a random photo."
-                (click)="randomPhoto()"
-                class="button">
-                <mat-icon>info</mat-icon>
-            </span>
-            <span class="button" (click)="nextPhoto(true)">
-                <mat-icon>keyboard_arrow_right</mat-icon>
-            </span>
+            <div class="controller-row">
+                <span class="button {{displayHiddenController()}}" (click)="nextPhoto(false)">
+                    <mat-icon>keyboard_arrow_left</mat-icon>
+                </span>
+                <span class="button" (click)="showCaption(true)">
+                    <mat-icon>keyboard_arrow_up</mat-icon>
+                </span>
+                <span class="button {{displayHiddenController()}}" (click)="nextPhoto(true)">
+                    <mat-icon>keyboard_arrow_right</mat-icon>
+                </span>
+            </div>
+            <div class="controller-row {{displayFullController()}}">
+                <span class="button" (click)="nextPhoto(false)">
+                    <mat-icon>keyboard_arrow_left</mat-icon>
+                </span>
+                <span class="button" (click)="randomPhoto()">
+                    <mat-icon>shuffle</mat-icon>
+                </span>
+                <span class="button" (click)="nextPhoto(true)">
+                    <mat-icon>keyboard_arrow_right</mat-icon>
+                </span>
+            </div>
+            <div class="controller-row {{displayFullController()}}">
+                <span class="button" (click)="showCaption(false)">
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </span>
+            </div>
         </div>
     </div>
+
     <div class="caption fade-out-segment {{displayInfoBar()}}">
         <div class="caption-wrapper">
             <div class="caption-text" innerHtml={{imageCaption}}></div>
             <div class="caption-date">{{imageDate | date:'longDate'}}</div>
-        </div>
-       
+        </div>   
     </div>
-    <div class="map">
+
+    <div class="map {{displayInfoBar()}}">
         <a href="https://www.google.com/maps/d/viewer?z=5&mid=1N2KbOB6BV77lcvQUWlmVyWKsTGw&ll={{imageLatLon}}" target="_blank">
             <img src='{{getMapByApi()}}'>
         </a>

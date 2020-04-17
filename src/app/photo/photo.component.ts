@@ -3,7 +3,6 @@ import { PHOTOS } from '../../assets/photo-data';
 import { HostListener } from '@angular/core';
 // @ts-ignore
 import { EXIF } from 'exif-js';
-//import { EXIF as exifShim, EXIFStatic } from 'exif-js/exif';
 
 @Component({
   selector: 'app-photo',
@@ -15,15 +14,17 @@ export class PhotoComponent implements OnInit {
   allPhotos = PHOTOS;
   currentImageIndex: number;
   showInfoBar: boolean;
-
+  gettingNextPhoto: boolean;
   imageCaption: string;
   imageDate: Date;
   imageLatLon: string;
   imageLonLat: string;
 
-  mapboxToken = 'pk.eyJ1IjoicGhlbmd0IiwiYSI6ImNrOHQzdjAxdDBsaDQzb3A5cnZmeTFtaGkifQ.9xxRrU9BWuSGUYsldAwa6A';
+  mapboxToken = '###pk.eyJ1IjoicGhlbmd0IiwiYSI6ImNrOHQzdjAxdDBsaDQzb3A5cnZmeTFtaGkifQ.9xxRrU9BWuSGUYsldAwa6A';
   
-  constructor() { }
+  constructor() {
+    this.gettingNextPhoto = false;
+  }
 
   ngOnInit() {
     this.currentImageIndex = 0;
@@ -42,6 +43,7 @@ export class PhotoComponent implements OnInit {
   }
 
   onLoadImage() {
+    this.gettingNextPhoto = false;
     const photoElement = document.getElementById('photo');
     delete photoElement['exifdata'];
     const self = this;
@@ -94,7 +96,9 @@ export class PhotoComponent implements OnInit {
       `${this.imageLonLat},2,0/150x150@2x?access_token=${this.mapboxToken}`;
    }
   }
+  
   nextPhoto(goRight: boolean) { 
+    if (this.gettingNextPhoto) return;
     if (goRight) this.currentImageIndex++;
     else this.currentImageIndex--;
 
@@ -102,6 +106,15 @@ export class PhotoComponent implements OnInit {
     else if (this.currentImageIndex > this.allPhotos.length-1) this.currentImageIndex = 0;
   }
 
+  showCaption(show: boolean) {
+    this.showInfoBar = show;
+  }
+  displayFullController() {
+    return this.showInfoBar ? '' : 'no-view';
+  }
+  displayHiddenController() {
+    return this.showInfoBar ? 'no-view' : '';
+  }
   randomPhoto() {
     let nextIndex = this.currentImageIndex;
 
