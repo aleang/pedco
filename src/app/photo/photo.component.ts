@@ -7,7 +7,7 @@ import { EXIF } from 'exif-js';
 @Component({
   selector: 'app-photo',
   templateUrl: './photo.component.html',
-  styleUrls: ['./photo.component.less']
+  styleUrls: ['../app.component.less', './photo.component.less']
 })
 
 export class PhotoComponent implements OnInit {
@@ -86,9 +86,15 @@ export class PhotoComponent implements OnInit {
   }
 
   getCurrentImageFileName(): string {
-    return this.allPhotos[this.currentImageIndex];
+    return 'https://aleang.github.io/images/' + this.allPhotos[this.currentImageIndex];
   }
 
+  backgroundStyles(): Object {
+    return {
+      'background-image': `url(${this.getCurrentImageFileName()})`,
+      'background-size': 'cover'
+    }
+  }
   getMapByApi(): string {
     if (this.imageLonLat) {
       return `https://api.mapbox.com/styles/v1/phengt/ck8vc5ral1zjw1ila2gxjl2au/` +

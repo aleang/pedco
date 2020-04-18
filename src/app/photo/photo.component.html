@@ -1,9 +1,13 @@
 <h2 id="portrait-mode-message">
     <mat-icon>screen_rotation</mat-icon><br>
-    Please rotate the screen to landscape.
+    Please view in landscape.
 </h2>
+<div class="photo-box-background" [ngStyle]=backgroundStyles()></div>
 <div class="photo-box">
-    <img id="photo" src="https://aleang.github.io/images/{{getCurrentImageFileName()}}" (load)="onLoadImage()"/>
+    <img id="photo"
+        class="disable-blur"
+        src="{{getCurrentImageFileName()}}"
+        (load)="onLoadImage()"/>
 </div>
 
 <div class="info-bar {{displayInfoBar()}}">
@@ -42,7 +46,7 @@
     <div class="caption fade-out-segment {{displayInfoBar()}}">
         <div class="caption-wrapper">
             <div class="caption-text" innerHtml={{imageCaption}}></div>
-            <div class="caption-date">{{imageDate | date:'longDate'}}</div>
+            <div class="caption-date">{{imageDate | date:'d MMMM yyyy'}}</div>
         </div>   
     </div>
 

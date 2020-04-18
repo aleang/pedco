@@ -1,11 +1,16 @@
 @import '../../styles.less';
 
+@caption-font-size: 20px;
+@caption-date-font-size: 15px;
+@caption-opacity: 0.75;
+@bg-blur: 10px;
+
 #portrait-mode-message {
     display: none;
     text-align: center;
 }
 
-.photo-box {
+.photo-box, .photo-box-background {
     width: 100%;
     height: calc(100% - 60px);
     position: absolute;
@@ -20,19 +25,26 @@
         top: 0px;
         position: relative;
         animation-name: slideBackground;
-        animation-duration: 10s;
+        animation-duration: 5s;
         animation-iteration-count: infinite;
         animation-direction: alternate;
+
     }     
     @keyframes slideBackground {
         from {
-            top: 0;
+            height: 100%
         }
-        to { 
-            top: -150px;
+        to {
+            top: -60px;
+            height: 120%
         }
     }
 }
+
+.photo-box-background {
+    filter: blur(@bg-blur);
+}
+
 .info-bar {
     width: 100%;
     height: 150px;
@@ -44,7 +56,7 @@
     transition: all 150ms ease-in-out;
 
     .fade-out-segment {
-        opacity: 0.8;
+        opacity: @caption-opacity;
         background: white;
     }
 
@@ -71,6 +83,8 @@
             span:hover {
                 text-shadow: 0 0 4px #808080;
                 background-color: grey;
+                border-radius: 15px;
+                color: black;
             }
             mat-icon {
                 margin: auto 0;
@@ -102,13 +116,12 @@
         &-text {
             flex-grow: 2;
             text-align: center;
-            font-size: 20px;
+            font-size: @caption-font-size;
         }
 
         &-date {
             text-align: right;
-            font-size: 15px;
-            font-style: italic;
+            font-size: @caption-date-font-size;
             margin-top: 5px;
 
             &::before {
@@ -142,11 +155,11 @@
             padding: 5px;
             
             &-text {
-                font-size: 12px;
+                font-size: calc(0.75 * @caption-font-size);
             }
     
             &-date {
-                font-size: 8px;
+                font-size: calc(0.75 * @caption-date-font-size);
             }
         }
         .map {
@@ -160,17 +173,17 @@
     .info-bar {
         .caption {
             &-text {
-                font-size: 15px;
+                font-size: calc(0.6 * @caption-font-size);
             }
     
             &-date {
-                font-size: 12px;
+                font-size: calc(0.6 * @caption-font-size);
             }
         }
     }
 }
 @media screen and (orientation:portrait) {
-    .photo-box, .info-bar {
+    .photo-box, .photo-box-background, .info-bar {
         display: none;   
     }
     #portrait-mode-message {
