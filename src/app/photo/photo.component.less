@@ -14,15 +14,12 @@
     overflow: hidden;
     display: flex;
     justify-content: center;
-
+    
     img {
         width: 100%;
         top: 0;
         position: relative;
-        animation-name: slideBackground;
-        animation-duration: 5s;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
+        object-fit: contain;
     }
 
     @keyframes slideBackground {
@@ -139,11 +136,6 @@
     }
 }
 @media screen and (max-width: 1000px) {    
-    
-    .photo-box img {
-        object-fit: contain;
-        animation: none;
-    }
     .info-bar {
         height: 100px;
 

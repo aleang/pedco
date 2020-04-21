@@ -47,7 +47,19 @@ p {
   background-color: green;
   font-weight: 600;
   padding-left: 1em;
+  z-index: 2;
+  position: relative;
 }
+
+.mini-toolbar {
+  padding-left: 0;
+  height: 24px;
+  font-size: 24px;
+  width: 24px;
+  z-index: 2;
+  position: relative;
+}
+
 .content {
   display: flex;
   margin: 32px auto;
@@ -141,14 +153,6 @@ footer a {
 
 /* Responsive Styles */
 @media screen and (max-width: 810px) {
-  .mini-toolbar {
-    padding-left: 0;
-    height: 24px;
-    font-size: 24px;
-    width: 24px;
-    z-index: 2;
-    position: relative;
-  }
 
   .card-container > *:not(.circle-link) ,
   .terminal {
