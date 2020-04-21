@@ -5,31 +5,26 @@
 @caption-opacity: 0.75;
 @bg-blur: 10px;
 
-#portrait-mode-message {
-    display: none;
-    text-align: center;
-}
-
 .photo-box, .photo-box-background {
     width: 100%;
-    height: calc(100% - 60px);
+    height: 100%;
     position: absolute;
-    top: 60px;
+    top: 0;
     left: 0;
     overflow: hidden;
     display: flex;
     justify-content: center;
 
     img {
-        height: 100%;
-        top: 0px;
+        width: 100%;
+        top: 0;
         position: relative;
         animation-name: slideBackground;
         animation-duration: 5s;
         animation-iteration-count: infinite;
         animation-direction: alternate;
+    }
 
-    }     
     @keyframes slideBackground {
         from {
             height: 100%
@@ -144,8 +139,9 @@
     }
 }
 @media screen and (max-width: 1000px) {    
+    
     .photo-box img {
-        height: 100%;
+        object-fit: contain;
         animation: none;
     }
     .info-bar {
@@ -180,13 +176,5 @@
                 font-size: calc(0.6 * @caption-font-size);
             }
         }
-    }
-}
-@media screen and (orientation:portrait) {
-    .photo-box, .photo-box-background, .info-bar {
-        display: none;   
-    }
-    #portrait-mode-message {
-        display: block;
     }
 }

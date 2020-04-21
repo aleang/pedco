@@ -1,7 +1,7 @@
 <!-- Navigation Toolbar -->
-<div class="toolbar" role="banner">
+<div class="toolbar" role="banner" [ngClass]="{'mini-toolbar': router.url === '/photo'}">
   <h2>
-    <a routerLink="/dashboard">
+    <a routerLink="/dashboard" title="Go back">
       <span *ngIf="router.url !== '/dashboard'"><mat-icon>arrow_back</mat-icon></span>
       <span *ngIf="router.url === '/dashboard'" onclick="runIt()">{{title}}</span>
     </a>
@@ -12,7 +12,7 @@
 <div class="content" role="main">
   <router-outlet></router-outlet>  
 
-  <footer>
+  <footer [ngClass]="{'hide': router.url === '/photo'}">
     <p>
       <a id="github-link" href="https://github.com/aleang" target="_blank">aleang.github.io</a>
     </p>

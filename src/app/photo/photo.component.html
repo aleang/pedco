@@ -1,7 +1,3 @@
-<h2 id="portrait-mode-message">
-    <mat-icon>screen_rotation</mat-icon><br>
-    Please view in landscape.
-</h2>
 <div class="photo-box-background" [ngStyle]=backgroundStyles()></div>
 <div class="photo-box">
     <img id="photo"
@@ -17,7 +13,7 @@
                 <span class="button {{displayHiddenController()}}" (click)="nextPhoto(false)">
                     <mat-icon>keyboard_arrow_left</mat-icon>
                 </span>
-                <span class="button" (click)="showCaption(true)">
+                <span class="button" (click)="showCaption(true)" title="Show captions">
                     <mat-icon>keyboard_arrow_up</mat-icon>
                 </span>
                 <span class="button {{displayHiddenController()}}" (click)="nextPhoto(true)">
@@ -25,18 +21,18 @@
                 </span>
             </div>
             <div class="controller-row {{displayFullController()}}">
-                <span class="button" (click)="nextPhoto(false)">
+                <span class="button" (click)="nextPhoto(false)" title="See previous photo">
                     <mat-icon>keyboard_arrow_left</mat-icon>
                 </span>
-                <span class="button" (click)="randomPhoto()">
+                <span class="button" (click)="randomPhoto()" title="See a random photo">
                     <mat-icon>shuffle</mat-icon>
                 </span>
-                <span class="button" (click)="nextPhoto(true)">
+                <span class="button" (click)="nextPhoto(true)" title="See next photo">
                     <mat-icon>keyboard_arrow_right</mat-icon>
                 </span>
             </div>
             <div class="controller-row {{displayFullController()}}">
-                <span class="button" (click)="showCaption(false)">
+                <span class="button" (click)="showCaption(false)" title="Hide captions">
                     <mat-icon>keyboard_arrow_down</mat-icon>
                 </span>
             </div>

@@ -135,8 +135,20 @@ footer a {
   align-items: center;
 }
 
+.hide {
+  display: none;
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 810px) {
+  .mini-toolbar {
+    padding-left: 0;
+    height: 24px;
+    font-size: 24px;
+    width: 24px;
+    z-index: 2;
+    position: relative;
+  }
 
   .card-container > *:not(.circle-link) ,
   .terminal {
