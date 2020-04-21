@@ -8,8 +8,17 @@ import { Country } from '../country';
 })
 export class CountryDetailsComponent implements OnInit {
   @Input() country: Country;
+  scoreCategory: string[];
 
-  constructor() { }
+  constructor() {
+    this.scoreCategory = [
+      'People & Culture',
+      'Infrastructure, Safety and Politics',
+      'Landscape & Nature',
+      'Value for Money',
+      'Camping & Outdoor Living',
+    ];
+  }
 
   ngOnInit() {
   }

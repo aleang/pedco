@@ -10,7 +10,7 @@
         <p>Select a country to learn more.</p>
         <ul>
             <li *ngFor="let country of allCountry">
-                <a (click)="onSelect(country)" (mouseenter)="onSelect(country)">{{country.name}}</a>
+                <a (click)="onSelect(country)">{{country.name}}</a>
             </li>
         </ul>
     </div>

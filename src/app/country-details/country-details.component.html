@@ -1,12 +1,14 @@
 <div>
     <p>
-        All in all, we cycled approximately
-        <span *ngFor="let x of '22000KM'.split('') | slice:1">
-            <code class="distance">{{x}}</code>    
-        </span>
-        for just under
-        <span class="stick-label"><span class="days">22</span>months.</span> 
-        Together both of us spent around <span class="money">10,000</span>.
+        All in all, we cycled through 19 countries in just under
+        <span class="stick-label"><span class="days">22</span>months</span>.
+        There were several occasions we couldn't cycle (train, boat and police van)
+        but approximately 95% of our route was done by pushing those pedals.
+        Our Silk Road tour was split into four sections: 
+        <span class="fave-place">China</span>
+        <span class="fave-place">Central Asia</span>
+        <span class="fave-place">Middle East</span>
+        <span class="fave-place">Europe</span>
     </p>
 </div>
 
@@ -28,5 +30,14 @@
         <span class="money stick-label">{{country.averageDailySpend | number:'1.2-2'}}</span>
         a day.
         Check out more content about {{country.name}} on <a href="https://www.instagram.com/stories/highlights/{{country.igStory}}/" target="_blank">Instagram Stories</a> and <a href="https://pedallingcontinents.wordpress.com/tag/{{country.name}}/" target="_blank">WordPress blogs</a>.
-    </p> 
+    </p>
+    <div *ngIf="country.score">
+        <span>Our Experience Score (out of 5 stars)</span>
+        <div *ngFor="let j of country.score; index as i;">
+            <span class="category">{{scoreCategory[i]}}</span>
+            <span class="stars">
+                <span *ngFor="let k of [].constructor(j)">🟊</span>
+            </span>
+        </div>
+    </div>
 </div>

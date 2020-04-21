@@ -32,13 +32,16 @@ div {
 }
 
 .fave-place {
-    padding: 0 .5em;
+    font-family: sans-serif;
     background: @road-sign-bg;
     color: black;
     white-space: nowrap;
+
+    padding: 0 3px 0 5px;
     position: relative;
-    margin-right: 0.5em;
-    font-family: sans-serif;
+    margin-right: 15px;
+    height: 20px;
+    display: inline-block;
 }
 
 .fave-place::after {
@@ -47,7 +50,7 @@ div {
     left: 100%;
     height: 0;
     width: 0;
-    border-width: 8px;
+    border-width: 10px;
     border-style: solid;
     border-color: @ghost @ghost @ghost @road-sign-bg;
     display: inline-block;
@@ -62,4 +65,14 @@ div {
 
 .stick-label {
     white-space: nowrap; 
+}
+
+.category {
+    width: 200px;
+    display: inline-block;
+    font-size: 12px;
+}
+
+.stars {
+    color: gold;
 }

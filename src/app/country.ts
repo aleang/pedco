@@ -17,12 +17,12 @@ export class Country {
     dateLeft?: Date;
 
     /**
-     * 5 star score on 5 criteria: 
-     * Landscape and Nature
-     * People and Culture
-     * Infrastructure, Safety and Politics
-     * Value for Money
-     * Camping and Outdoor Living
+     * Five stars scoring based on five criteria: 
+     * 1. People and Culture
+     * 2. Infrastructure, Safety and Politics
+     * 3. Landscape and Nature
+     * 4. Value for Money
+     * 5. Camping and Outdoor Living
      */
-    score: number[];
+    score?: number[];
 }
