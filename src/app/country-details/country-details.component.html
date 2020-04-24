@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="!country">
     <p>
         All in all, we cycled through 19 countries in just under
         <span class="stick-label"><span class="days">22</span>months</span>.
@@ -13,7 +13,6 @@
 </div>
 
 <div *ngIf="country">
-    <h3>{{country.name}}</h3>
     <p>
         We cycled about around
         <code class="distance" *ngFor="let i of (country.distanceCycled+'KM').split('')">{{i}}</code> 
@@ -23,20 +22,32 @@
             </span>.      
         <span *ngIf="country.favouritePlace">
             Both of us picked 
-            <span class="fave-place">{{country.favouritePlace}}</span>
+            <a href="https://duckduckgo.com/?q={{country.favouritePlace}}"
+                class="fave-place"
+                target="_blank">
+                {{country.favouritePlace}}
+            </a>
             as our favourite place. 
         </span>
         We spent on average around
         <span class="money stick-label">{{country.averageDailySpend | number:'1.2-2'}}</span>
         a day.
-        Check out more content about {{country.name}} on <a href="https://www.instagram.com/stories/highlights/{{country.igStory}}/" target="_blank">Instagram Stories</a> and <a href="https://pedallingcontinents.wordpress.com/tag/{{country.name}}/" target="_blank">WordPress blogs</a>.
+        Check out more content about {{country.name}} on 
+        <a href="https://www.instagram.com/stories/highlights/{{country.igStory}}/" target="_blank">
+            Instagram
+        </a>
+        and
+        <a href="https://pedallingcontinents.wordpress.com/tag/{{country.name}}/" target="_blank">
+            WordPress
+        </a>
     </p>
     <div *ngIf="country.score">
         <span>Our Experience Score (out of 5 stars)</span>
         <div *ngFor="let j of country.score; index as i;">
             <span class="category">{{scoreCategory[i]}}</span>
             <span class="stars">
-                <span *ngFor="let k of [].constructor(j)">🟊</span>
+                <span *ngFor="let k of [].constructor(j)" class="gold">🟊</span>
+                <span *ngFor="let k of [].constructor(5-j)" class="grey">🟊</span>
             </span>
         </div>
     </div>

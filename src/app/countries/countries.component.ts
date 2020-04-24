@@ -11,13 +11,13 @@ export class CountriesComponent implements OnInit {
   allCountry = COUNTRIES;
   selectedCountry?: Country;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
 
   }
 
   onSelect(country?: Country): void {
-    this.selectedCountry = country;
+    this.selectedCountry = this.selectedCountry === country ? null : country;
   }
 }
