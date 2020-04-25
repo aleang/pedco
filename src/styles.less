@@ -71,8 +71,6 @@ ul {
     }
 }
 
-
-
 #click-box {
     background: @button-country;
     padding: 10px;
@@ -91,6 +89,10 @@ ul {
     #click-box;
     cursor: pointer;
     padding: 0em 1em 1em 1em;
+
+    &.highlight {
+        background: @button-selected;
+    }
 }
 
 .blog.column:hover {

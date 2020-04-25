@@ -1,31 +1,44 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
   styleUrls: ['../app.component.less', './blog.component.less']
 })
+
 export class BlogComponent implements OnInit {
   private blogLinks: string[];
   private queryTags: string[];
   private requiredFields: string[];
   private wordpressApi: string;
+  private searchString: string;
   postsResult: WordPressPost[];
   fetchingData: boolean;
   showNoResult: boolean;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private route: ActivatedRoute) {
     this.wordpressApi = 'https://public-api.wordpress.com/rest/v1.1/sites/pedallingcontinents.wordpress.com/posts/?';
     this.blogLinks = ['tag/trip-status/', 'tag/dear-food-diary', 'category/report-card', 'tag/shoestring-travel'];
     this.queryTags = ['tag=trip-status/', 'tag=dear-food-diary', 'category=Report%20Card', 'tag=shoestring-travel'];
     this.requiredFields = ['title', 'short_URL', 'date'];
     this.fetchingData = false;
     this.showNoResult = false;
-    this.postsResult = [];
+    this.postsResult = [];    
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.searchString = this.route.snapshot.queryParamMap.get("search");
+    if (this.searchString) {
+      document.querySelector('#search-box').scrollIntoView();
+      this.getPostsBySearch(this.searchString);
+    }
+  }
+
+  haveQuery(): string {
+    return this.searchString ? 'highlight' : '';
+  }
 
   goTo(query: string) {
     window.open('https://pedallingcontinents.wordpress.com/' + query);

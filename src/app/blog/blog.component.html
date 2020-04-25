@@ -39,21 +39,21 @@
         <span>Load the latest 20 posts.</span>
     </div>
 
-    <div class="column blog" (click)="focusOnSearch()">
+    <div class="column blog {{haveQuery()}}" (click)="focusOnSearch()" id="search-box">
         <h3><mat-icon>search</mat-icon>Search the Blog</h3>
-        <input #queryBox (keydown.enter)="getPostsBySearch(queryBox.value)" />
+        <input #queryBox (keydown.enter)="getPostsBySearch(queryBox.value)" value={{searchString}}/>
         <button (click)="getPostsBySearch(queryBox.value)">Search</button>
   </div>
 </div>
 
-<div class="row loading-results">
+<div class="row row-fourth loading-results">
     <div *ngIf="fetchingData">
         <div class="lds-dual-ring"></div>
     </div>
     <h4 *ngIf="postsResult.length>0">Here are the posts:</h4>
     <h4 *ngIf="showNoResult">Sorry, no posts found.</h4>
 </div>
-<div class="row">
+<div class="row row-fourth">
     <ul>
         <li *ngFor="let post of postsResult" title="{{post.title}}" (click)="goToPost(post.short_URL)">
             <span class="published-date">{{post.date | date:'d MMMM, y'}}</span>

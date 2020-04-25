@@ -158,7 +158,7 @@ export const COUNTRIES: Country[] = [
 	},
     {
         id: 'hr',
-        name: 'Croatia & Slovenia',
+        name: 'Croatia and Slovenia',
         region: 'Europe',
         daysCycled: 4,
         distanceCycled: 233,
