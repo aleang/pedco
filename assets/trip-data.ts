@@ -12,7 +12,7 @@ export const COUNTRIES: Country[] = [
         igStory: 17981117905040928,
         color: '#f44336',
         dateLeft: new Date(2018, 6, 4),
-    	score: [],
+    	score: [4, 3, 3, 3, 2],
 	},
     {
         id: 'kz',
@@ -25,7 +25,7 @@ export const COUNTRIES: Country[] = [
         igStory: 17981973844050067,
         color: '#009688',
         dateLeft: new Date(2018, 6, 19),
-    	score: [],
+    	score: [4, 3, 3, 3, 4],
 	},
     {
         id: 'kg',
@@ -38,7 +38,7 @@ export const COUNTRIES: Country[] = [
         igStory: 17864517859282762,
         color: '#009688',
         dateLeft: new Date(2018, 7, 27),
-    	score: [],
+    	score: [3, 3, 5, 4, 5],
 	},
     {
         id: 'tj',
@@ -51,7 +51,7 @@ export const COUNTRIES: Country[] = [
         igStory: 17872834954284943,
         color: '#009688',
         dateLeft: new Date(2018, 9, 10),
-    	score: [],
+    	score: [5, 3, 5, 4, 5],
 	},
     {
         id: 'uz',
@@ -64,7 +64,7 @@ export const COUNTRIES: Country[] = [
         igStory: 17917294267245938,
         color: '#009688',
         dateLeft: new Date(2018, 9, 25),
-    	score: [],
+    	score: [5, 4, 3, 5, 4],
 	},
     {
         id: 'tm',
@@ -76,7 +76,7 @@ export const COUNTRIES: Country[] = [
         igStory: 17888999020279256,
         color: '#009688',
         dateLeft: new Date(2018, 9, 29),
-    	score: [],
+    	score: [5, 3, 3, 4, 4],
 	},
     {
         id: 'ir',
@@ -89,7 +89,7 @@ export const COUNTRIES: Country[] = [
         igStory: 17937173983260990,
         color: '#fdd835',
         dateLeft: new Date(2019, 1, 26),
-    	score: [],
+    	score: [4, 2, 3, 5, 4],
 	},
     {
         id: 'kd',
@@ -102,7 +102,7 @@ export const COUNTRIES: Country[] = [
         igStory: 18002745499196044,
         color: '#fdd835',
         dateLeft: new Date(2019, 2, 18),
-    	score: [],
+    	score: [4, 3, 4, 2, 4],
 	},
     {
         id: 'tr',
@@ -115,7 +115,7 @@ export const COUNTRIES: Country[] = [
         igStory: 18054776278020770,
         color: '#fdd835',
         dateLeft: new Date(2019, 5, 15),
-    	score: [],
+    	score: [4, 3, 4, 4, 4],
 	},
     {
         id: 'bg',
@@ -128,7 +128,7 @@ export const COUNTRIES: Country[] = [
         igStory: 18071568355069625,
         color: '#553a99',
         dateLeft: new Date(2019, 7, 19),
-    	score: [],
+    	score: [4, 3, 4, 4, 5],
 	},
     {
         id: 'rs',
@@ -141,7 +141,7 @@ export const COUNTRIES: Country[] = [
         igStory: 17888894407380738,
         color: '#553a99',
         dateLeft: new Date(2019, 7, 25),
-    	score: [],
+    	score: [4, 3, 4, 4, 4],
 	},
     {
         id: 'ba',
@@ -154,11 +154,11 @@ export const COUNTRIES: Country[] = [
         igStory: 17957541127292758,
         color: '#553a99',
         dateLeft: new Date(2019, 9, 3),
-    	score: [],
+    	score: [3, 3, 4, 4, 3],
 	},
     {
         id: 'hr',
-        name: 'Croatia & Slovenia',
+        name: 'Croatia and Slovenia',
         region: 'Europe',
         daysCycled: 4,
         distanceCycled: 233,
@@ -167,7 +167,7 @@ export const COUNTRIES: Country[] = [
         igStory: 17916199729348383,
         color: '#553a99',
         dateLeft: new Date(2019, 9, 6),
-    	score: [],
+    	// score: [],
 	},
     {
         id: 'it',
@@ -180,7 +180,7 @@ export const COUNTRIES: Country[] = [
         igStory: 17872907794470767,
         color: '#553a99',
         dateLeft: new Date(2019, 9, 20),
-    	score: [],
+    	// score: [],
 	},
     {
         id: 'fr',
@@ -193,7 +193,7 @@ export const COUNTRIES: Country[] = [
         igStory: 18086182084119543,
         color: '#553a99',
         dateLeft: new Date(2019, 10, 1),
-    	score: [],
+    	// score: [],
 	},
     {
         id: 'es',
@@ -206,7 +206,7 @@ export const COUNTRIES: Country[] = [
         igStory: 18092162683101184,
         color: '#553a99',
         dateLeft: new Date(2019, 10, 29),
-    	score: [],
+    	// score: [],
 	},
     {
         id: 'pt',
@@ -219,6 +219,6 @@ export const COUNTRIES: Country[] = [
         igStory: 17863750252582398,
         color: '#553a99',
         dateLeft: new Date(2019, 11, 7),
-        score: [],
+        // score: [],
     }
   ];
