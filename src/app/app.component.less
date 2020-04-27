@@ -52,10 +52,10 @@ p {
 }
 
 .mini-toolbar {
-  padding-left: 0;
+  padding: 12px;
+  width: 24px;
   height: 24px;
   font-size: 24px;
-  width: 24px;
   z-index: 2;
   position: relative;
 }
@@ -153,7 +153,6 @@ footer a {
 
 /* Responsive Styles */
 @media screen and (max-width: 810px) {
-
   .card-container > *:not(.circle-link) ,
   .terminal {
     width: 40%;
@@ -166,6 +165,10 @@ footer a {
 }
 
 @media screen and (max-width: 575px) {
+  .mini-toolbar {
+    padding: 0;
+  }
+  
   .card-container > *:not(.circle-link) ,
   .terminal {
     width: 100%;

@@ -37,7 +37,7 @@ export class BlogComponent implements OnInit {
   }
 
   haveQuery(): string {
-    return this.searchString ? 'highlight' : '';
+    return this.route.snapshot.queryParamMap.get("search") ? 'highlight' : '';
   }
 
   goTo(query: string) {
@@ -66,7 +66,9 @@ export class BlogComponent implements OnInit {
   }
 
   getPostsBySearch(search: string) {
-    this.getPostsByQuery('search=' + search.trim());
+    if (search.length === 0) return;
+    this.searchString = search;
+    this.getPostsByQuery('search=' + this.searchString.trim());
   }
   
   getPostsByQuery(query: string) {
