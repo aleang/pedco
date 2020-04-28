@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Country } from '../country';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-country-details',
@@ -10,7 +11,7 @@ export class CountryDetailsComponent implements OnInit {
   @Input() country: Country;
   scoreCategory: string[];
 
-  constructor() {
+  constructor(public router: Router) {
     this.scoreCategory = [
       'People & Culture',
       'Infrastructure, Safety and Politics',
@@ -22,5 +23,8 @@ export class CountryDetailsComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
+  searchBlog() {
+    this.router.navigate(['/blog'], { queryParams: { search: this.country.name } });
+  }
 }

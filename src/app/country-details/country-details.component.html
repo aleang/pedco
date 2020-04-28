@@ -14,7 +14,7 @@
 
 <div *ngIf="country">
     <p>
-        We cycled about around
+        In {{country.name}} we cycled around
         <code class="distance" *ngFor="let i of (country.distanceCycled+'KM').split('')">{{i}}</code> 
         for <span class="stick-label">
                 <span class="days">{{country.daysCycled}}</span>
@@ -37,17 +37,15 @@
             Instagram
         </a>
         and
-        <a href="/blog?search={{country.name}}">
-            WordPress
-        </a>
+        <a (click)="searchBlog()">WordPress</a>
     </p>
     <div *ngIf="country.score">
-        <span>Our Experience Score (out of 5 stars)</span>
+        <span>Our Experience Score</span>
         <div *ngFor="let j of country.score; index as i;">
             <span class="category">{{scoreCategory[i]}}</span>
             <span class="stars">
-                <span *ngFor="let k of [].constructor(j)" class="gold">🟊</span>
-                <span *ngFor="let k of [].constructor(5-j)" class="grey">🟊</span>
+                <span *ngFor="let k of [].constructor(j)" class="gold"><mat-icon>star</mat-icon></span>
+                <span *ngFor="let k of [].constructor(5-j)" class="grey"><mat-icon>star_border</mat-icon></span>
             </span>
         </div>
     </div>
