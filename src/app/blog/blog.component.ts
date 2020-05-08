@@ -13,7 +13,7 @@ export class BlogComponent implements OnInit {
   private queryTags: string[];
   private requiredFields: string[];
   private wordpressApi: string;
-  private searchString: string;
+  searchString: string;
   postsResult: WordPressPost[];
   fetchingData: boolean;
   showNoResult: boolean;
