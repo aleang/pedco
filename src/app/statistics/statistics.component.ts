@@ -48,16 +48,30 @@ export class StatisticsComponent implements OnInit {
   getData(key: string) {
     if (key === 'cumulativeDistance') {
       let cumulativeTotal = 0;
-      let data = [[new Date(2018, 2, 17), 0]];
+      let distanceByRegions = {
+        'East Asia': 0,
+        'Central Asia': 0,
+        'Middle East': 0,
+        'Europe': 0,
+      };
+      
+      let data = [[new Date(2018, 2, 17), ...Object.values(distanceByRegions)]];
+      
       COUNTRIES.forEach(country => {
         cumulativeTotal += country.distanceCycled;
-        data.push([country.dateLeft, cumulativeTotal]);
+        distanceByRegions[country.region] += country.distanceCycled;
+
+        data.push([country.dateLeft, ...Object.values(distanceByRegions)]);
       });
       return data;
+
+
     } else if (key === 'distance') {
       return COUNTRIES.map(country => {
         return [country.name, country.distanceCycled]
       });
+
+
     } else if (key === 'distanceAverage') {
       return COUNTRIES.map(country => {
         return [
@@ -66,6 +80,8 @@ export class StatisticsComponent implements OnInit {
           country.color,
           country.name
         ]});
+
+
     } else if (key === 'regionSpending') { 
       let data = [
         ['China to Portugal',null,0,0],
@@ -78,6 +94,7 @@ export class StatisticsComponent implements OnInit {
         data.push([c.name, c.region, c.daysCycled * c.averageDailySpend, c.averageDailySpend]);
       });
       return data;
+
     } else if (key === 'regionDays') { 
       let data = [
         ['China to Portugal',null,0,0],
@@ -92,6 +109,7 @@ export class StatisticsComponent implements OnInit {
       return data;
     }
   }
+
   // *** Charts configurations ******************************
   getDistanceChartDataConfig(): any {
     return {
@@ -116,19 +134,27 @@ export class StatisticsComponent implements OnInit {
     return {
       type: 'AreaChart',
       data: this.getData('cumulativeDistance'),
-      columnNames: ['Date', 'Cumulative Distance Cycled'],
+      columnNames: ['Date', 'East Asia', 'Central Asia', 'Middle East', 'Europe'],
       options: {
         ...this.baseChartOptions, 
         ...{
           title: 'Total Distance Cycled (approx. 22,000 km)',
-          hAxis: {format:'MM/yyyy'},
+          hAxis: {title: 'Date', format:'MMM yy'},
           vAxis: {minValue: 0},
+          isStacked: true,
           legend: {position: 'bottom'},
           selectionMode: 'multiple',
           crosshair: { trigger: 'both' },
+          tooltip: { trigger: 'none' },
           explorer: {},
           chartArea: {left:50,top:20,width:'80%',height:'75%'},
-          height: 400
+          height: 400,
+          series: {
+            0: {color: '#f44336', lineWidth: 0},
+            1: {color: '#009688', lineWidth: 0},
+            2: {color: '#fdd835', lineWidth: 0},
+            3: {color: '#553a99', lineWidth: 0},
+          }
         }
       },
     };
