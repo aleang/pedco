@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { PHOTOS } from '../../assets/photo-data';
+import { getPhotoList } from '../../assets/photo-data';
 import { HostListener } from '@angular/core';
 // @ts-ignore
 import { EXIF } from 'exif-js';
@@ -11,7 +11,8 @@ import { EXIF } from 'exif-js';
 })
 
 export class PhotoComponent implements OnInit {
-  allPhotos = PHOTOS;
+  TEST_LOCAL_IMAGE = false;
+  allPhotos = getPhotoList();
   currentImageIndex: number;
   showInfoBar: boolean;
   gettingNextPhoto: boolean;
@@ -86,7 +87,10 @@ export class PhotoComponent implements OnInit {
   }
 
   getCurrentImageFileName(): string {
-    return 'https://aleang.github.io/images/' + this.allPhotos[this.currentImageIndex];
+    if (this.TEST_LOCAL_IMAGE) {
+      return '../../assets/photos/originals/' + this.allPhotos[this.currentImageIndex];
+    }
+    return 'https://aleang.github.io/images/pedco/' + this.allPhotos[this.currentImageIndex];
   }
 
   backgroundStyles(): Object {
