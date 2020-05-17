@@ -1,8 +1,33 @@
-export const PHOTOS = [
-    'cn-tianjin.jpg',
-    'cn-camp.jpg',
-    'cn-xian.jpg',
-    'cn-valley.jpg',    
-    'cn-gang.jpg',
-    'cn-teddy.jpg',
-];
+/**
+ * How to add photo:
+ * 1. Name the file using the syntax [xy]-[one word description].jpg
+ * 2. Add GPS metadata (use GeoSetter)
+ * 3. Add Haiku Caption to 'Title' field (syntax like Line1#Line2#Line3)
+ * 4. Optimise photo for web to under 1MB (use Photoshop 'Image Processor' Quality 1)
+ * 5. Add exported photo to aleang.github.io github under /images
+ */
+const PHOTOS = {
+    cn: [
+        'ferris',
+        'tianjin',
+        'camp',
+        'xian',
+        'valley',
+        'xining',
+        'qinghaipicnic',
+        'saltlake',
+        'jumping',
+        'gang',
+        'teddy',
+    ],
+};
+
+export function getPhotoList(): string[] {
+    let photos = [];
+    Object.keys(PHOTOS).forEach(countryTag => {
+        PHOTOS[countryTag].forEach(photoName => {
+            photos.push(`${countryTag}-${photoName}.jpg`);
+        });
+    });
+    return photos;
+}
