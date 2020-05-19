@@ -10,29 +10,29 @@
     <div class="controller fade-out-segment">
         <div class="controller-wrapper">
             <div class="controller-row">
-                <span class="button {{displayHiddenController()}}" (click)="nextPhoto(false)">
+                <span class="button {{displayHiddenController()}}" (click)="nextPhoto(false)" title="See previous photo (press ⯇)">
                     <mat-icon>keyboard_arrow_left</mat-icon>
                 </span>
-                <span class="button" (click)="showCaption(true)" title="Show captions">
+                <span class="button" (click)="showCaption(true)" title="Show captions (press ▲)">
                     <mat-icon>keyboard_arrow_up</mat-icon>
                 </span>
-                <span class="button {{displayHiddenController()}}" (click)="nextPhoto(true)">
+                <span class="button {{displayHiddenController()}}" (click)="nextPhoto(true)" title="See next photo (press ⯈)">
                     <mat-icon>keyboard_arrow_right</mat-icon>
                 </span>
             </div>
             <div class="controller-row {{displayFullController()}}">
-                <span class="button" (click)="nextPhoto(false)" title="See previous photo">
+                <span class="button" (click)="nextPhoto(false)" title="See previous photo (press ⯇)">
                     <mat-icon>keyboard_arrow_left</mat-icon>
                 </span>
-                <span class="button" (click)="randomPhoto()" title="See a random photo">
+                <span class="button" (click)="randomPhoto()" title="See a random photo (press Space)">
                     <mat-icon>shuffle</mat-icon>
                 </span>
-                <span class="button" (click)="nextPhoto(true)" title="See next photo">
+                <span class="button" (click)="nextPhoto(true)" title="See next photo (press ⯈)">
                     <mat-icon>keyboard_arrow_right</mat-icon>
                 </span>
             </div>
             <div class="controller-row {{displayFullController()}}">
-                <span class="button" (click)="showCaption(false)" title="Hide captions">
+                <span class="button" (click)="showCaption(false)" title="Hide captions (press ▼)">
                     <mat-icon>keyboard_arrow_down</mat-icon>
                 </span>
             </div>

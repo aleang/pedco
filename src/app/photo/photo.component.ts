@@ -11,7 +11,7 @@ import { EXIF } from 'exif-js';
 })
 
 export class PhotoComponent implements OnInit {
-  TEST_LOCAL_IMAGE = false;
+  TEST_LOCAL_IMAGE = true;
   allPhotos = getPhotoList();
   currentImageIndex: number;
   showInfoBar: boolean;
@@ -20,11 +20,13 @@ export class PhotoComponent implements OnInit {
   imageDate: Date;
   imageLatLon: string;
   imageLonLat: string;
+  alreadySeenPhoto: Number[];
 
-  mapboxToken = '###pk.eyJ1IjoicGhlbmd0IiwiYSI6ImNrOHQzdjAxdDBsaDQzb3A5cnZmeTFtaGkifQ.9xxRrU9BWuSGUYsldAwa6A';
+  mapboxToken = 'pk.eyJ1IjoicGhlbmd0IiwiYSI6ImNrOHQzdjAxdDBsaDQzb3A5cnZmeTFtaGkifQ.9xxRrU9BWuSGUYsldAwa6A';
   
   constructor() {
     this.gettingNextPhoto = false;
+    this.alreadySeenPhoto = [];
   }
 
   ngOnInit() {
@@ -44,6 +46,7 @@ export class PhotoComponent implements OnInit {
   }
 
   onLoadImage() {
+    this.alreadySeenPhoto.push(this.currentImageIndex);
     this.gettingNextPhoto = false;
     const photoElement = document.getElementById('photo');
     delete photoElement['exifdata'];
@@ -82,6 +85,8 @@ export class PhotoComponent implements OnInit {
       this.showInfoBar = true;
     } else if (event.key === 'ArrowDown') {
       this.showInfoBar = false;
+    } else if (event.key === ' ') {
+      this.randomPhoto();
     }
     event.preventDefault();
   }
@@ -100,6 +105,9 @@ export class PhotoComponent implements OnInit {
     }
   }
   getMapByApi(): string {
+    if (this.TEST_LOCAL_IMAGE) {
+      return '';
+    }
     if (this.imageLonLat) {
       return `https://api.mapbox.com/styles/v1/phengt/ck8vc5ral1zjw1ila2gxjl2au/` +
       `static/pin-s-star+285A98(${this.imageLonLat})/` + 
@@ -128,10 +136,14 @@ export class PhotoComponent implements OnInit {
   randomPhoto() {
     let nextIndex = this.currentImageIndex;
 
-    while (nextIndex === this.currentImageIndex) {
+    if (this.alreadySeenPhoto.length === this.allPhotos.length) {
+      alert('You have seen all the photos!');
+      this.alreadySeenPhoto = [];
+    }
+    nextIndex = Math.floor(Math.random() * this.allPhotos.length);
+    while (this.alreadySeenPhoto.includes(nextIndex)) {
       nextIndex = Math.floor(Math.random() * this.allPhotos.length);
     }
     this.currentImageIndex = nextIndex;
   }
-
 }
