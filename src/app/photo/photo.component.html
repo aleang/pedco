@@ -1,5 +1,5 @@
 <div class="photo-box-background" [ngStyle]=backgroundStyles()></div>
-<div class="photo-box">
+<div class="photo-box" (click)="nextPhoto(true)">
     <img id="photo"
         class="disable-blur"
         src="{{getCurrentImageFileName()}}"
@@ -7,9 +7,9 @@
 </div>
 
 <div class="info-bar {{displayInfoBar()}}">
-    <div class="controller fade-out-segment">
+    <div class="controller fade-out-segment {{displayBiggerController()}}">
         <div class="controller-wrapper">
-            <div class="controller-row">
+            <div class="controller-row {{displayBiggerController()}}" id="ctrl-1-row">
                 <span class="button {{displayHiddenController()}}" (click)="nextPhoto(false)" title="See previous photo (press ⯇)">
                     <mat-icon>keyboard_arrow_left</mat-icon>
                 </span>
@@ -20,7 +20,7 @@
                     <mat-icon>keyboard_arrow_right</mat-icon>
                 </span>
             </div>
-            <div class="controller-row {{displayFullController()}}">
+            <div class="controller-row {{displayFullController()}}" id="ctrl-2-row">
                 <span class="button" (click)="nextPhoto(false)" title="See previous photo (press ⯇)">
                     <mat-icon>keyboard_arrow_left</mat-icon>
                 </span>
@@ -31,7 +31,7 @@
                     <mat-icon>keyboard_arrow_right</mat-icon>
                 </span>
             </div>
-            <div class="controller-row {{displayFullController()}}">
+            <div class="controller-row {{displayFullController()}}" id="ctrl-3-row">
                 <span class="button" (click)="showCaption(false)" title="Hide captions (press ▼)">
                     <mat-icon>keyboard_arrow_down</mat-icon>
                 </span>

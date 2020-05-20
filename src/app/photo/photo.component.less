@@ -53,13 +53,21 @@
     }
 
     &.no-view, .no-view {
-        height: 24px;
-        opacity: 0.5;
+        height: 48px;
+        opacity: 0.8;
+
+        .material-icons {
+            font-size: 48px;
+        }
     }
 
     .controller {
         display: flex;
         
+        &.biggy {
+            border-radius: 50px;
+        }
+
         .controller-wrapper {
             display: flex;
             margin-top: auto;
@@ -75,8 +83,9 @@
             span:hover {
                 text-shadow: 0 0 4px #808080;
                 background-color: grey;
-                border-radius: 15px;
+                border-radius: 100%;
                 color: black;
+                box-shadow: inset 0px 0px 5px 0px #3a3a3a;
             }
             mat-icon {
                 margin: auto 0;
@@ -89,6 +98,11 @@
         .button {
             width: 24px;
             height: 24px;
+        }
+
+        .biggy .button {
+            width: 48px;
+            height: 48px;
         }
     }
 
@@ -143,15 +157,16 @@
             padding: 5px;
             
             &-text {
-                font-size: calc(0.75 * @caption-font-size);
+                font-size: calc(0.7 * @caption-font-size);
             }
     
             &-date {
-                font-size: calc(0.75 * @caption-date-font-size);
+                font-size: calc(0.7 * @caption-date-font-size);
             }
         }
         .map {
             height: 100px;
+            width: 100px;
             overflow: hidden;
         }
     }
@@ -161,12 +176,17 @@
     .info-bar {
         .caption {
             &-text {
-                font-size: calc(0.6 * @caption-font-size);
+                font-size: calc(0.5 * @caption-font-size);
             }
     
             &-date {
-                font-size: calc(0.6 * @caption-font-size);
+                font-size: calc(0.5 * @caption-font-size);
             }
         }
+    }
+}
+@media screen and (max-width: 300px) {
+    .info-bar .map {
+        display: none;
     }
 }

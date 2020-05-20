@@ -133,6 +133,8 @@ export class PhotoComponent implements OnInit {
   displayHiddenController() {
     return this.showInfoBar ? 'no-view' : '';
   }
+    return this.showInfoBar ? '' : 'biggy';
+  }
   randomPhoto() {
     let nextIndex = this.currentImageIndex;
 
