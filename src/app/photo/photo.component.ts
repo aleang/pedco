@@ -133,6 +133,7 @@ export class PhotoComponent implements OnInit {
   displayHiddenController() {
     return this.showInfoBar ? 'no-view' : '';
   }
+  displayBiggerController() {
     return this.showInfoBar ? '' : 'biggy';
   }
   randomPhoto() {
