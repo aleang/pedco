@@ -10,9 +10,13 @@ const PHOTOS = {
     cn: [
         'ferris',
         'tianjin',
+        'smile',
+        'firstcamp',
         'camp',
         'xian',
         'valley',
+        'tea',
+        'terraces',
         'xining',
         'qinghaipicnic',
         'saltlake',

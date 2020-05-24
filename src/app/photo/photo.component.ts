@@ -98,6 +98,17 @@ export class PhotoComponent implements OnInit {
     return 'https://aleang.github.io/images/pedco/' + this.allPhotos[this.currentImageIndex];
   }
 
+  getNextImageForPreload(): string {
+    if (this.currentImageIndex - 1 === this.allPhotos.length) {
+      return;
+    }
+    
+    if (this.TEST_LOCAL_IMAGE) {
+      return '../../assets/photos/originals/' + this.allPhotos[this.currentImageIndex+1];
+    }
+    return 'https://aleang.github.io/images/pedco/' + this.allPhotos[this.currentImageIndex+1];
+  }
+
   backgroundStyles(): Object {
     return {
       'background-image': `url(${this.getCurrentImageFileName()})`,
@@ -139,7 +150,7 @@ export class PhotoComponent implements OnInit {
   randomPhoto() {
     let nextIndex = this.currentImageIndex;
 
-    if (this.alreadySeenPhoto.length === this.allPhotos.length) {
+    if (this.alreadySeenPhoto.length >= this.allPhotos.length) {
       // alert('You have seen all the photos!');
       this.alreadySeenPhoto = [];
     }
