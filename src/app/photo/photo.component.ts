@@ -140,7 +140,7 @@ export class PhotoComponent implements OnInit {
     let nextIndex = this.currentImageIndex;
 
     if (this.alreadySeenPhoto.length === this.allPhotos.length) {
-      alert('You have seen all the photos!');
+      // alert('You have seen all the photos!');
       this.alreadySeenPhoto = [];
     }
     nextIndex = Math.floor(Math.random() * this.allPhotos.length);

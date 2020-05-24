@@ -41,8 +41,9 @@
 
     <div class="caption fade-out-segment {{displayInfoBar()}}">
         <div class="caption-wrapper">
+            <div class="caption-index sans-serif">{{currentImageIndex+1}}</div>
             <div class="caption-text" innerHtml={{imageCaption}}></div>
-            <div class="caption-date">{{imageDate | date:'d MMMM yyyy'}}</div>
+            <div class="caption-date sans-serif">{{imageDate | date:'d MMMM yyyy'}}</div>
         </div>   
     </div>
 
