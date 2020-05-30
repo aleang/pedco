@@ -99,15 +99,22 @@ export class PhotoComponent implements OnInit {
   }
 
   getNextImageForPreload(): string {
-    if (this.currentImageIndex - 1 === this.allPhotos.length) {
-      return;
+    let nextPointer = this.currentImageIndex + 1;
+    if (this.currentImageIndex === this.allPhotos.length - 1) {
+      nextPointer = 0;
     }
-    
-    if (this.TEST_LOCAL_IMAGE) {
-      return '../../assets/photos/originals/' + this.allPhotos[this.currentImageIndex+1];
-    }
-    return 'https://aleang.github.io/images/pedco/' + this.allPhotos[this.currentImageIndex+1];
+    return (this.TEST_LOCAL_IMAGE ? '../../assets/photos/originals/' : 'https://aleang.github.io/images/pedco/')
+      + this.allPhotos[nextPointer];
   }
+  getPrevImageForPreload(): string {
+    let nextPointer = this.currentImageIndex - 1;
+    if (this.currentImageIndex === 0) {
+      nextPointer = this.allPhotos.length - 1;
+    }
+    return (this.TEST_LOCAL_IMAGE ? '../../assets/photos/originals/' : 'https://aleang.github.io/images/pedco/')
+      + this.allPhotos[nextPointer];
+  }
+
 
   backgroundStyles(): Object {
     return {
