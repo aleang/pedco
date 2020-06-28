@@ -1,6 +1,6 @@
 /**
  * How to add photo:
- * 1. Name the file using the syntax [xy]-[one word description].jpg
+ * 1. Name the file using the syntax [xy]-[one word tag].jpg
  * 2. Add GPS metadata (use GeoSetter)
  * 3. Add Haiku Caption to 'Title' field (syntax like Line1#Line2#Line3)
  * 4. Optimise photo for web to under 1MB (use Photoshop 'Image Processor' Quality 5, Action MakeHeightSize800px)
@@ -29,6 +29,8 @@ const PHOTOS = {
         'gang',
         'teddy',
     ],
+    kg: ['gravel', 'rainbow', 'well', 'galaxy', 'cloud'],
+
 };
 
 export function getPhotoList(): string[] {
