@@ -11,7 +11,7 @@ import { EXIF } from 'exif-js';
 })
 
 export class PhotoComponent implements OnInit {
-  TEST_LOCAL_IMAGE = true;
+  TEST_LOCAL_IMAGE = false;
   allPhotos = getPhotoList();
   currentImageIndex: number;
   showInfoBar: boolean;

@@ -3,7 +3,7 @@
     Our WordPress blog host all the stories, photos and travel information we think will be helpful and inspire others to take up tour cycling. Since completing the trip, we have been posting less as we settle down in London, but don't worry, there are plenty more stories to share.
 </p>
 
-<div class="row row-first">
+<div class="row row-1">
     <div class="column blog" (click)="getPosts(0)">        
         <h3><mat-icon>flag</mat-icon>Trip Status</h3>        
         <span>
@@ -18,7 +18,7 @@
         </span>
     </div>
 </div>
-<div class="row row-second">
+<div class="row row-2">
     <div class="column blog" (click)="getPosts(2)">        
         <h3><mat-icon>class</mat-icon>Report Card</h3>
         <span>
@@ -33,12 +33,19 @@
         </span>
   </div>
 </div>
-<div class="row row-third">
+<div class="row row-3">
     <div class="column blog" (click)="getPostsByQuery('')">        
         <h3><mat-icon>update</mat-icon>Get Latest</h3>
         <span>Load the latest 20 posts.</span>
     </div>
 
+    <div class="column blog" (click)="goToPedcoQuiz()">
+        <h3><mat-icon>spellcheck</mat-icon>Blog Quiz</h3>
+        <span>Instagram Story themed quiz based on photos from the trip.</span>
+  </div>
+</div>
+
+<div class="row row-4">
     <div class="column blog {{haveQuery()}}" (click)="focusOnSearch()" id="search-box">
         <h3><mat-icon>search</mat-icon>Search the Blog</h3>
         <input #queryBox (keydown.enter)="getPostsBySearch(queryBox.value)" value={{searchString}}/>
@@ -46,7 +53,7 @@
   </div>
 </div>
 
-<div class="row row-fourth loading-results">
+<div class="row row-5 loading-results">
     <div *ngIf="fetchingData">
         <div class="lds-dual-ring"></div>
     </div>

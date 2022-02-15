@@ -104,6 +104,10 @@ export class BlogComponent implements OnInit {
       }
     );
   }
+
+  goToPedcoQuiz() {
+    window.open('https://aleang.github.io/pedco-quiz/');
+  }
 }
 
 export class WordPressPost {

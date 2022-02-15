@@ -29,7 +29,20 @@ const PHOTOS = {
         'gang',
         'teddy',
     ],
-    kg: ['gravel', 'rainbow', 'well', 'galaxy', 'cloud'],
+    kz: [
+        'spring',
+        'camp',
+        'boys',
+    ],
+    kg: [
+        'church',
+        'apricot',
+        'gravel',
+        'rainbow',
+        'well',
+        'galaxy',
+        'cloud'
+    ],
 
 };
 

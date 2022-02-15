@@ -8,7 +8,5 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Pedalling Continents';
-  constructor(public router: Router) {
-
-  }
+  constructor(public router: Router) {}
 }

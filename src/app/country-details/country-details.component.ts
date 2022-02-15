@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-country-details',
   templateUrl: './country-details.component.html',
-  styleUrls: ['./country-details.component.less']
+  styleUrls: ['./country-details.component.less', '../app.component.less']
 })
 export class CountryDetailsComponent implements OnInit {
   @Input() country: Country;
