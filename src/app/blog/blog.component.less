@@ -35,10 +35,16 @@
         justify-content: space-between;
     }
 
-    iframe#blog-iframe {
+    #blog-iframe {
         width: 90%;
         min-height: 90vh;
         margin: 0 4em;
+
+        @media screen and (max-width: 880px) {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
     }
 }
 

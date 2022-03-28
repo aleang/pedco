@@ -61,7 +61,7 @@
     <h4 *ngIf="showNoResult">Sorry, "{{searchString}}" is not mentioned in our blogs</h4>
 </div>
 
-<div class="row row-fourth">
+<div class="row row-6">
     <ul>
         <li *ngFor="let post of postsResult" title="{{post.title}}" (click)="selectPost(post)">
             <span class="published-date">{{post.date | date:'d MMMM, y'}}</span>
@@ -74,9 +74,9 @@
     <div class="blog-header">
         <span (click)="unselectPost()" title="Close"><mat-icon>close</mat-icon></span>
         <span [innerHTML]="selectedPost.title"></span>
-        <span (click)="goToPost(selectedPost.short_URL); preventDefault()" title="View in WordPress">
+        <span (click)="goToPost(selectedPost.short_URL)" title="View in WordPress">
             <mat-icon>add_to_home_screen</mat-icon>
         </span>
     </div>
-    <iframe id="blog-iframe" [src]="selectedPostUrl" (click)="preventDefault()"></iframe>
+    <iframe id="blog-iframe" [src]="selectedPostUrl"></iframe>
 </div>
