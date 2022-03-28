@@ -12,6 +12,10 @@ h3, p {
     margin-top: 0;
 }
 
+p {
+    line-height: 25px;
+}
+
 a {
     cursor: pointer;
 }
@@ -27,6 +31,7 @@ a {
 
 .days {
     background-color: @calendar-bg;
+    font-family: 'Consolas', 'Courier New', Courier, monospace;
     padding: 0 6px;
     border-top: 3px solid red;
     margin-right: 5px;
@@ -42,7 +47,7 @@ a {
 .fave-place {
     font-family: sans-serif;
     background: @road-sign-bg;
-    color: black;
+    color: black !important;
     white-space: nowrap;
 
     padding: 0 3px 0 5px;
@@ -50,6 +55,18 @@ a {
     margin-right: 15px;
     height: 20px;
     display: inline-block;
+    line-height: 20px;
+
+    &:hover {
+        color: black;
+        animation: shake 0.5s;
+    }
+
+    @keyframes shake {
+        0% { transform: rotate(0deg); }
+        50% { transform: rotate(-5deg); }
+        100% { transform: rotate(0deg); }
+    }
 }
 
 .fave-place::after {

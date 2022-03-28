@@ -11,9 +11,41 @@
     &-5 { animation-delay: 1000ms; }
 }
 
+.row-blog-content {
+    z-index: 2;
+    flex-direction: column;
+    align-content: center;
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: #000000cc;
+
+    mat-icon {
+        cursor: pointer;
+    }
+
+    div.blog-header {
+        text-align: center;
+        line-height: 35px;
+        flex-direction: row;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    iframe#blog-iframe {
+        width: 90%;
+        min-height: 90vh;
+        margin: 0 4em;
+    }
+}
+
 p {
     margin-bottom: 1em;
 }
+
 .mat-icon {
     float: left;
     padding: 0.3em 0.1em;

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from "@angular/router";
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blog',
@@ -17,15 +18,19 @@ export class BlogComponent implements OnInit {
   postsResult: WordPressPost[];
   fetchingData: boolean;
   showNoResult: boolean;
+  selectedPost: WordPressPost;
+  selectedPostUrl: SafeResourceUrl;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, protected sanitizer: DomSanitizer) {
     this.wordpressApi = 'https://public-api.wordpress.com/rest/v1.1/sites/pedallingcontinents.wordpress.com/posts/?';
     this.blogLinks = ['tag/trip-status/', 'tag/dear-food-diary', 'category/report-card', 'tag/shoestring-travel'];
     this.queryTags = ['tag=trip-status/', 'tag=dear-food-diary', 'category=Report%20Card', 'tag=shoestring-travel'];
     this.requiredFields = ['title', 'short_URL', 'date'];
     this.fetchingData = false;
     this.showNoResult = false;
-    this.postsResult = [];    
+    this.postsResult = [];
+    this.selectedPost = null;
+    this.selectedPostUrl = null;
   }
 
   ngOnInit(): void {
@@ -40,12 +45,17 @@ export class BlogComponent implements OnInit {
     return this.route.snapshot.queryParamMap.get("search") ? 'highlight' : '';
   }
 
-  goTo(query: string) {
-    window.open('https://pedallingcontinents.wordpress.com/' + query);
-  }
-
   goToPost(url: string) {
     window.open(url);
+  }
+
+  selectPost(post: WordPressPost) {
+    this.selectedPost = post;
+    this.selectedPostUrl = this.sanitizer.bypassSecurityTrustResourceUrl(post.short_URL);
+  }
+
+  unselectPost() {
+    this.selectedPost = this.selectedPostUrl = null;
   }
 
   @ViewChild("queryBox", {static: false}) queryField: ElementRef;
@@ -76,6 +86,7 @@ export class BlogComponent implements OnInit {
     this.fetchingData = true;
     this.showNoResult = false;
     this.postsResult = [];
+    this.unselectPost();
     this.http.get<WordPressPost>(this.wordpressApi + query + this.getOrderByDate() + this.getRequiredFieldsQueryString())
     .subscribe(
       data => {
